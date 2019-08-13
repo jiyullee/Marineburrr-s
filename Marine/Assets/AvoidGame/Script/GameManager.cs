@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         GameOverUI.SetActive(true);
+        
 
     }
     public void ReGame()

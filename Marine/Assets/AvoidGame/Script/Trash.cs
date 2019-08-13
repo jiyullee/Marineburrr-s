@@ -5,7 +5,6 @@ using UnityEngine;
 public class Trash : DropObject
 {
     
-
     public override void Function()
     {
         service.GetComponent<GameManager>().GameOver();

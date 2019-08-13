@@ -10,12 +10,13 @@ public class HazardManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(DropObjects());
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     IEnumerator DropObjects()
