@@ -7,17 +7,11 @@ public class ClownFishMove : MonoBehaviour
     float xPos;
     float yRot;
     public float speed;
-
-
-    private void Update()
+    private void Start()
     {
-        xPos = transform.position.x;
-        yRot = transform.rotation.y;
-
-        int direction = GetComponent<ClownFish>().direction;
-        if (direction == -1)
-            transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y + 1.0f, transform.rotation.z, transform.rotation.w);
-        transform.Translate(Time.deltaTime * speed, 0, 0);
+        Mathf.Clamp(transform.position.x, -640.0f, 640.0f);
+        Mathf.Clamp(transform.position.y, -360.0f, 360.0f);
     }
 
+  
 }

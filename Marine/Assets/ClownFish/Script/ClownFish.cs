@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClownFish : Enemy
+public class ClownFish : MonoBehaviour
 {
 }

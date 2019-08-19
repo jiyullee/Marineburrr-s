@@ -14,7 +14,6 @@ public class SharkMove : MonoBehaviour
         xPos = transform.position.x;
 
         yRot = transform.rotation.y;
-        print(yRot);
         int direction = GetComponent<Shark>().direction;
         if (direction == -1)
             transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y + 1.0f, transform.rotation.z, transform.rotation.w);
