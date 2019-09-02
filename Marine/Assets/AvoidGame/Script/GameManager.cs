@@ -26,9 +26,8 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        Time.timeScale = 0;
-        GameOverUI.SetActive(true);
-        
+        SceneManager.LoadScene("Main");
+
 
     }
     public void ReGame()
