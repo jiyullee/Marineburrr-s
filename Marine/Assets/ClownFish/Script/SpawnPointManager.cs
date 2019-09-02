@@ -9,7 +9,7 @@ public class SpawnPointManager : MonoBehaviour
     List<GameObject> leftSpawnPointList = new List<GameObject>();
     int spRand;
     int enemyRand;
-    float delay = 10.0f;
+    float delay = 5.0f;
     private void Start()
     {
         StartCoroutine(Spawn());

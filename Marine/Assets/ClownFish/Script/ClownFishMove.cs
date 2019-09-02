@@ -7,10 +7,10 @@ public class ClownFishMove : MonoBehaviour
     float xPos;
     float yRot;
     public float speed;
-    private void Start()
+    private void Update()
     {
-        Mathf.Clamp(transform.position.x, -640.0f, 640.0f);
-        Mathf.Clamp(transform.position.y, -360.0f, 360.0f);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -640.0f, 640.0f), Mathf.Clamp(transform.position.y, -360.0f, 360.0f), 0);
+        
     }
 
   
