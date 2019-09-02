@@ -8,6 +8,7 @@ TagManager:
   - Service
   - Dolphin
   - Turtle
+  - Shark
   layers:
   - Default
   - TransparentFX
