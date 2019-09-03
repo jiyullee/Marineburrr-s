@@ -9,6 +9,10 @@ TagManager:
   - Dolphin
   - Turtle
   - Shark
+  - Main
+  - Fish
+  - SeaWeeds
+  - Trash
   layers:
   - Default
   - TransparentFX

@@ -5,10 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+ 
     public GameObject player;
-    // Start is called before the first frame update
-   public void StartAvoidGame()
+    public int level = 1;
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+    private void Update()
+    {
+       
+    }
+    public void StartAvoidGame()
     {
         SceneManager.LoadScene("AvoidGame");
+    }
+    public void StartCrownFishGame()
+    {
+        SceneManager.LoadScene("WhiteClownfish");
     }
 }

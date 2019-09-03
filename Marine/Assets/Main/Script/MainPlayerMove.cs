@@ -15,6 +15,7 @@ public class MainPlayerMove : MonoBehaviour
     private void Start()
     {
         destination = transform.position;
+       //gameObject.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerPos"), transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame
@@ -23,22 +24,7 @@ public class MainPlayerMove : MonoBehaviour
 
         pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float distance = transform.position.x - destination.x;
-        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        //{
-        //    print("Touch");
-        //    Ray2D ray = new Ray2D(pos, Vector3.forward);
-        //    RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-        //    if(hit.collider.gameObject.tag == "NPC")
-        //    {
 
-        //    }
-        //    else
-        //    {
-        //        Vector3 destination = new Vector3(pos.x, transform.position.y, transform.position.z);
-        //        Vector3.Lerp(transform.position,new Vector2(pos.x,transform.position.y), 0.2f);
-        //        print(2323);
-        //    }
-        //}
         if (distance < -0.2f)
         {
             transform.Translate(speed, 0, 0);
@@ -66,6 +52,10 @@ public class MainPlayerMove : MonoBehaviour
             if (hit.collider.gameObject.tag == "Turtle")
             {
                 SceneManager.LoadScene("AvoidGame");
+            }
+            else if(hit.collider.gameObject.tag == "Fish")
+            {
+                SceneManager.LoadScene("WhiteClownfish");
             }
             else
             {

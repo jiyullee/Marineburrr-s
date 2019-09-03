@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xPos = Mathf.Clamp(transform.position.x, -5.3f, 5.3f);
+        xPos = Mathf.Clamp(transform.position.x, -7.7f, 7.7f);
         transform.position = new Vector3(xPos,transform.position.y,transform.position.z);
     }
 }

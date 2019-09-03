@@ -7,7 +7,7 @@ public class SeaWeeds : DropObject
  
    public override void Function()
     {
-        service.GetComponent<GameManager>().IncreaseScore();
+        service.GetComponent<AvoidGameManager>().IncreaseScore();
     }
 
     

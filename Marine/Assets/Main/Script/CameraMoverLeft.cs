@@ -8,7 +8,7 @@ public class CameraMoverLeft : MonoBehaviour
     bool activate = true;
     private void Update()
     {
-     if(MainManager.player.transform.position.x > transform.position.x)
+       if(MainManager.player.transform.position.x > transform.position.x)
         {
             activate = false;
         }

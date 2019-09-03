@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    GameObject player;
+    [SerializeField] GameObject player;
     Vector3 startPos = Vector3.zero;
     Vector3 endPos = Vector3.zero;
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+   
 
     // Update is called once per frame
     void FixedUpdate()
