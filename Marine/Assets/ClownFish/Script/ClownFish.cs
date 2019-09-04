@@ -5,6 +5,7 @@ using UnityEngine;
 public class ClownFish : MonoBehaviour
 {
     GameObject service;
+    public bool direction;
     private void Start()
     {
         service = GameObject.FindGameObjectWithTag("Service");
@@ -13,11 +14,12 @@ public class ClownFish : MonoBehaviour
     {
         if(collider.gameObject.tag == "Shark")
         {
-            service.GetComponent<LevelManager>().score -= 5;
+            service.GetComponent<LevelManager>().score -= collider.GetComponent<Enemy>().decrease;
         }
         else if (collider.gameObject.tag == "Food")
         {
-            service.GetComponent<LevelManager>().score += 5;
+            service.GetComponent<LevelManager>().score += collider.GetComponent<Food>().increase;
+            Destroy(collider.gameObject);
         }
     }
 }

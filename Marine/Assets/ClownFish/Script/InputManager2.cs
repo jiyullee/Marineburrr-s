@@ -14,10 +14,12 @@ public class InputManager2 : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
+            player.GetComponent<ChangePlayerAnim>().direction = false;
             player.transform.Translate(Vector3.left * player.GetComponent<ClownFishMove>().speed);
         }
         else if (Input.GetKey(KeyCode.D))
         {
+            player.GetComponent<ChangePlayerAnim>().direction = true;
             player.transform.Translate(Vector3.right * player.GetComponent<ClownFishMove>().speed);
         }
         else if (Input.GetKey(KeyCode.W))

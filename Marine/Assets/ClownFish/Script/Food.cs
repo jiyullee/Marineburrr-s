@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Food : MonoBehaviour
 {
     public float lifeTime;
-    public bool direction;
-    public int decrease;
+    public int increase;
     private void OnEnable()
     {
-        StartCoroutine(DisableSelf());
+        StartCoroutine(DestroySelf());
     }
 
-    IEnumerator DisableSelf()
+    IEnumerator DestroySelf()
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
