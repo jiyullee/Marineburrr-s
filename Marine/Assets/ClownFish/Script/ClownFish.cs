@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< HEAD
 public class ClownFish : MonoBehaviour
 {
     GameObject service;
@@ -22,4 +23,8 @@ public class ClownFish : MonoBehaviour
             Destroy(collider.gameObject);
         }
     }
+=======
+public class ClownFish : Enemy
+{
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
 }

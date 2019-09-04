@@ -13,10 +13,16 @@ GameObject:
   - component: {fileID: 350410540171018024}
   - component: {fileID: 8724197662439919864}
   - component: {fileID: 4571107114422986239}
+<<<<<<< HEAD
   - component: {fileID: 758706124244635880}
   m_Layer: 0
   m_Name: JellyFish
   m_TagString: Shark
+=======
+  m_Layer: 8
+  m_Name: JellyFish
+  m_TagString: Untagged
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +36,11 @@ Transform:
   m_GameObject: {fileID: 350410540171018026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_LocalScale: {x: 60, y: 60, z: 1}
+=======
+  m_LocalScale: {x: 30, y: 30, z: 1}
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,9 +79,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+<<<<<<< HEAD
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
+=======
+  m_SortingLayerID: 500694609
+  m_SortingLayer: 1
+  m_SortingOrder: 1
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
   m_Sprite: {fileID: 21300000, guid: 8508ba73ee5daae4cbbb2bcabeaebe48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,7 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rand: 0
+<<<<<<< HEAD
   speed: 100
+=======
+  speed: 50
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
 --- !u!114 &4571107114422986239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 50
   direction: 1
+<<<<<<< HEAD
   decrease: 5
 --- !u!60 &758706124244635880
 PolygonCollider2D:
@@ -357,3 +378,5 @@ PolygonCollider2D:
       - {x: 0.235, y: 0.97499996}
       - {x: 0.285, y: 1.025}
       - {x: 0.285, y: 1.115}
+=======
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca

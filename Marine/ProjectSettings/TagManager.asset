@@ -4,10 +4,22 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Shark
   - Service
   - Food
   - Score
+=======
+  - Ground
+  - Service
+  - Dolphin
+  - Turtle
+  - Shark
+  - Main
+  - Fish
+  - SeaWeeds
+  - Trash
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
   layers:
   - Default
   - TransparentFX

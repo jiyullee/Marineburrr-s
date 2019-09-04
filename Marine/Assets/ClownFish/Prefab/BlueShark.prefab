@@ -13,10 +13,16 @@ GameObject:
   - component: {fileID: 5183628688367090390}
   - component: {fileID: 4319025329735760504}
   - component: {fileID: 4436874319156437846}
+<<<<<<< HEAD
   - component: {fileID: 6029398654550086697}
   m_Layer: 0
   m_Name: BlueShark
   m_TagString: Shark
+=======
+  m_Layer: 8
+  m_Name: BlueShark
+  m_TagString: Untagged
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +36,11 @@ Transform:
   m_GameObject: {fileID: 5183628688367090389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
   m_LocalScale: {x: 50, y: 50, z: 1}
+=======
+  m_LocalScale: {x: 30, y: 30, z: 1}
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,9 +79,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+<<<<<<< HEAD
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
+=======
+  m_SortingLayerID: 500694609
+  m_SortingLayer: 1
+  m_SortingOrder: 1
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
   m_Sprite: {fileID: 21300000, guid: 55a9be154ed38a3409f511cfbae1e67c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -114,7 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d2720ca84d7224781df34cc0f8142b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   speed: 200
+=======
+  speed: 30
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca
 --- !u!114 &4436874319156437846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16fdf35ddd3a5b04aa37fe8ff05b84b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   lifeTime: 10
   direction: 1
   decrease: 2
@@ -289,3 +310,7 @@ PolygonCollider2D:
       - {x: 0.77, y: -1.56}
       - {x: 0.95, y: -1.51}
       - {x: 1.23, y: -1.38}
+=======
+  lifeTime: 50
+  direction: 1
+>>>>>>> 9262ccc841801f6bf52297417b19477d108a7aca

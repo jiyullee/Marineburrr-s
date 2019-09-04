@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    GameObject player;
+    [SerializeField] GameObject player;
     Vector3 startPos = Vector3.zero;
     Vector3 endPos = Vector3.zero;
 
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
+   
 
     // Update is called once per frame
     void FixedUpdate()
@@ -19,10 +16,19 @@ public class InputManager : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             player.transform.Translate(Vector3.left * player.GetComponent<PlayerMove>().speed);
+            player.GetComponent<Animator>().SetBool("Left", true);
+            player.GetComponent<Animator>().SetBool("Right", false);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             player.transform.Translate(Vector3.right * player.GetComponent<PlayerMove>().speed);
+            player.GetComponent<Animator>().SetBool("Right", true);
+            player.GetComponent<Animator>().SetBool("Left", false);
+        }
+        else
+        {
+            player.GetComponent<Animator>().SetBool("Right", false);
+            player.GetComponent<Animator>().SetBool("Left", false);
         }
         
         
@@ -38,7 +44,18 @@ public class InputManager : MonoBehaviour
             }
             if (touch.phase == TouchPhase.Moved)
             {
+                float delection = touchPos.x - startPos.x;
                 diffpos = new Vector3(touchPos.x - startPos.x, 0.0f, 0.0f);
+                if(delection < 0)
+                {
+                    player.GetComponent<Animator>().SetBool("Left", true);
+                    player.GetComponent<Animator>().SetBool("Right", false);
+                }
+                else if (delection > 0)
+                {
+                    player.GetComponent<Animator>().SetBool("Left", false);
+                    player.GetComponent<Animator>().SetBool("Right", true);
+                }
                 startPos = touchPos;
                 player.transform.position += diffpos / 10;
             }
