@@ -7,14 +7,21 @@ public class MainPlayerMove : MonoBehaviour
 {
     Vector3 touchPos;
     Vector2 pos;
-    [SerializeField] float speed;
+    public float speed;
+    public float originSpeed;
     Vector3 destination;
+    [SerializeField] GameObject background;
+    [SerializeField] GameObject fishConversation;
+    [SerializeField] GameObject turtleConversation;
+    [SerializeField] GameObject dolphinConversation;
 
 
     // Start is called before the first frame update
     private void Start()
     {
         destination = transform.position;
+        originSpeed = speed;
+
        //gameObject.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerPos"), transform.position.y, transform.position.z);
     }
 
@@ -51,13 +58,23 @@ public class MainPlayerMove : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit.collider.gameObject.tag == "Turtle")
             {
-                SceneManager.LoadScene("AvoidGame");
+                background.SetActive(true);
+                speed = 0;
+                turtleConversation.SetActive(true);
             }
-            else if(hit.collider.gameObject.tag == "Fish")
+            else if (hit.collider.gameObject.tag == "Fish")
             {
-                SceneManager.LoadScene("WhiteClownfish");
+                background.SetActive(true);
+                speed = 0;
+                fishConversation.SetActive(true);
             }
-            else
+            else if(hit.collider.gameObject.tag == "Dolphin")
+            {
+                background.SetActive(true);
+                speed = 0;
+               //dolphinConversation.SetActive(true);
+            }
+            else if (hit.collider.gameObject.tag == "Map")
             {
                 destination = new Vector3(pos.x, transform.position.y, transform.position.z);
             }
