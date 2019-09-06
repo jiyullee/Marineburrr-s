@@ -11,13 +11,15 @@ public class SharkMove : MonoBehaviour
  
     private void Update()
     {
-        xPos = transform.position.x;
-
-        yRot = transform.rotation.y;
-        print(yRot);
-        int direction = GetComponent<Shark>().direction;
-        if (direction == -1)
-            transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y + 1.0f, transform.rotation.z, transform.rotation.w);
+        bool direction = GetComponent<Enemy>().direction;
+        if (direction)
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
+        else
+        {
+            transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
         transform.Translate(Time.deltaTime * speed, 0, 0);
     }
 
