@@ -8,10 +8,13 @@ public class LevelManager : MonoBehaviour
     public GameObject food;
     public GameObject player;
     public GameObject playerPrefab;
+    public Image pauseImage;
     public float foodDelay;
     public int score;
     int maxScore = 100;
     public Text scoreText;
+    float time = 0;
+    public bool bulletOn;
     void Start()
     {
 
@@ -31,7 +34,13 @@ public class LevelManager : MonoBehaviour
         if (score <= 0)
             score = 0;
         scoreText.text = score.ToString();
-        
+        time += Time.deltaTime;
+        print(time);
+        if(63.0f <=time && time <= 63.1f)
+        {
+            bulletOn = true;
+            StartCoroutine(Pause());                    
+        }
     }
 
     IEnumerator SpawnFood()
@@ -47,5 +56,12 @@ public class LevelManager : MonoBehaviour
           
             yield return new WaitForSeconds(foodDelay);
         }
+    }
+
+    IEnumerator Pause()
+    {
+        pauseImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        pauseImage.gameObject.SetActive(false);
     }
 }

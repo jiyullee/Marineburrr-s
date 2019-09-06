@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInputManager : MonoBehaviour
 {
     GameObject player;
+    public GameObject bullet;
+    bool canFire = true;
     private void Start()
     {
         player = GetComponent<LevelManager>().player;
@@ -12,6 +14,11 @@ public class PlayerInputManager : MonoBehaviour
     void Update()
     {
         float speed = player.GetComponent<ClownFish>().speed;
+        if (Input.GetMouseButtonDown(0) && canFire && GetComponent<LevelManager>().bulletOn)
+        {
+            
+            StartCoroutine(delay());
+        }
         if (Input.GetKey(KeyCode.W))
         {
             player.transform.Translate(Vector3.up *Time.deltaTime * speed);
@@ -30,5 +37,14 @@ public class PlayerInputManager : MonoBehaviour
             player.GetComponent<ClownFish>().direction = false;
             player.transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
+        
+    }
+
+    IEnumerator delay()
+    {
+        canFire = false;
+        Instantiate(bullet, player.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(0.1f);
+        canFire = true;
     }
 }

@@ -131,6 +131,9 @@ MonoBehaviour:
   lifeTime: 7
   direction: 1
   decrease: 5
+  increase: 5
+  HP: 5
+  service: {fileID: 0}
 --- !u!60 &6372012179757467117
 PolygonCollider2D:
   m_ObjectHideFlags: 0
