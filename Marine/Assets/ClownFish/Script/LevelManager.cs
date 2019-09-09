@@ -35,7 +35,6 @@ public class LevelManager : MonoBehaviour
             score = 0;
         scoreText.text = score.ToString();
         time += Time.deltaTime;
-        print(time);
         if(63.0f <=time && time <= 63.1f)
         {
             bulletOn = true;
