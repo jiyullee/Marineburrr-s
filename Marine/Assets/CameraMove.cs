@@ -12,6 +12,7 @@ public class CameraMove : MonoBehaviour
     }
     void Update()
     {
-        //transform.position = player.transform.position + new Vector3( 0, 0, -10);
+        float speed = player.GetComponent<Dolphin_Jump>().speed;
+        transform.Translate(Vector3.left * Time.deltaTime * speed);
     }
 }

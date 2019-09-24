@@ -4,30 +4,21 @@ using UnityEngine;
 
 public class Dolphin : MonoBehaviour
 {
-    public float speed;
-    public bool direction;
-    public Animator left;
-    public Animator right;
-    void Start()
-    {
-        
-    }
+    GameObject service;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-     //   transform.position = new Vector3(Mathf.Clamp(transform.position.x, -9.0f, 9.0f), Mathf.Clamp(transform.position.y, -5.0f, 5.0f));
-        if (direction)
+        service = GameObject.FindGameObjectWithTag("Service");
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.gameObject.tag == "Food")
         {
-            left.gameObject.SetActive(true);
-            right.gameObject.SetActive(false);
-        }
-        else
-        {
-            right.gameObject.SetActive(true);
-            left.gameObject.SetActive(false);
+            service.GetComponent<Dolphin_LevelManager>().score += collider.GetComponent<Feed>().increase;
+            Destroy(collider.gameObject);
         }
 
-        
     }
+
+
 }

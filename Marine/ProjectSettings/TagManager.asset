@@ -14,6 +14,9 @@ TagManager:
   - SeaWeeds
   - Trash
   - Map
+  - Food
+  - Ring
+  - CheckScore
   layers:
   - Default
   - TransparentFX
@@ -23,9 +26,9 @@ TagManager:
   - UI
   - 
   - 
+  - 
+  - Ground
   - Player
-  - 
-  - 
   - 
   - 
   - 
@@ -50,4 +53,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 
+    uniqueID: 3918305333
     locked: 0
