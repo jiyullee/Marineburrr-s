@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {x: -3.3, y: -2.4, z: 0}
-  level: 2
+  level: 1
 --- !u!1 &2094007816
 GameObject:
   m_ObjectHideFlags: 0

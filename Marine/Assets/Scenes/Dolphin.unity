@@ -541,7 +541,7 @@ MonoBehaviour:
   feed:
   - {fileID: 5310676049817540367, guid: 22c9f2996ee94a9499f7e16a4447ed74, type: 3}
   - {fileID: 1028510942544098385, guid: b4289afe68993c54591364aa3ebb3c22, type: 3}
-  feedDelay: 2.5
+  feedDelay: 1
 --- !u!1 &800584530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,7 +1926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122926545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 700, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

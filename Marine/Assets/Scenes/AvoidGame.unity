@@ -537,19 +537,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8392fad39c16e2c4ca13bd8b8fb497c2, type: 3}
-<<<<<<< HEAD
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 6
     m_MaxSize: 80
-=======
-    m_FontSize: 100
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 100
->>>>>>> 8ff96b0d8cce93bbe9d076126e6c3bf36802739d
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1277,7 +1269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: 0
   gameTime: 10
-  increaseAmount: 5
+  increaseAmount: 98
   decreaseAmount: 10
   GameOverUI: {fileID: 2030083713}
   Main: {fileID: 0}

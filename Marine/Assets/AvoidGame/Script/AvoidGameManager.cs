@@ -62,7 +62,7 @@ public class AvoidGameManager : MonoBehaviour
             {
                 Main.GetComponent<Main>().level += 1;
             }
-            SceneManager.LoadScene("Main");
+            Main.GetComponent<Main>().LoadScene();
         }
         else if(Score < 0)
         {

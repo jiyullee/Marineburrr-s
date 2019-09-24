@@ -12,13 +12,15 @@ public class Dolphin_LevelManager : MonoBehaviour
     public float ringDelay;
     public int score;
     int maxScore = 100;
-    public Text textScore; 
+    public Text textScore;
+    Main main;
     private void Start()
     {
         StartCoroutine(SpawnRing());
     }
     void Awake()
     {
+        main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
         player = Instantiate(playerPrefab);
     }
 
@@ -45,7 +47,13 @@ public class Dolphin_LevelManager : MonoBehaviour
         if (score <= 0)
             score = 0;
         if (score >= maxScore)
+        {
             score = maxScore;
+            if(main.level == 1)
+                main.levelUp();
+            main.LoadScene();
+        }
+          
         textScore.text = score.ToString();
     }
     public void DecreaseScore(int n)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,9 +16,12 @@ public class LevelManager : MonoBehaviour
     public Text scoreText;
     float time = 0;
     public bool bulletOn;
+    Main main;
+    
     void Start()
     {
 
+        main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
         StartCoroutine(SpawnFood());
     }
 
@@ -29,7 +33,7 @@ public class LevelManager : MonoBehaviour
     {
         if(score >= maxScore)
         {
-            // 게임 오버
+            main.LoadScene();
         }
         if (score <= 0)
             score = 0;
