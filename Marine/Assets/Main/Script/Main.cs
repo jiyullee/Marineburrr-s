@@ -6,10 +6,20 @@ public class Main : MonoBehaviour
 {
     public Vector3 playerPos;
     public int level = 1;
+    GameObject service;
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        service = GameObject.FindGameObjectWithTag("Service");
+        if (GameObject.FindGameObjectWithTag("Main") == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            gameObject.tag = "Main";
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         
         print(1);
     }
@@ -28,6 +38,10 @@ public class Main : MonoBehaviour
     public void LoadScene()
     {
         SceneManager.LoadScene("Main");
+    }
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetInt("Main", 0);
     }
 
 }

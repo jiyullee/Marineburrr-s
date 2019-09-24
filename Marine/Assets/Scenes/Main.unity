@@ -1038,7 +1038,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1249088fb1abb2346ada1570ad240115, type: 3}
   background: {fileID: 1394445404}
   player: {fileID: 109565777}
-  mainSaver: {fileID: 2077786222}
 --- !u!1 &680299414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1128,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3a11d9e360558dc45be9728a43198dd6, type: 3}
   background: {fileID: 1394445404}
   player: {fileID: 109565777}
-  mainSaver: {fileID: 2077786222}
 --- !u!222 &680299418
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2390,7 +2388,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2f529eaf1df53014cbc0d2037a46531b, type: 3}
   background: {fileID: 1394445404}
   player: {fileID: 109565777}
-  mainSaver: {fileID: 2077786222}
 --- !u!1 &2077786222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,7 +2400,7 @@ GameObject:
   - component: {fileID: 2077786224}
   m_Layer: 0
   m_Name: MainSaver
-  m_TagString: Main
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

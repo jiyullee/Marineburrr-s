@@ -23,19 +23,8 @@ public class MainPlayerMove : MonoBehaviour
     {
         
         originSpeed = speed;
-        service = GameObject.FindGameObjectWithTag("Service");
         mainSaver = GameObject.FindGameObjectWithTag("Main");
-        if(service.GetComponent<MainManager>().mainSaver.Count == 0)
-        {
-            service.GetComponent<MainManager>().mainSaver.Add(mainSaver);
-        }
-        else
-        {
-            Destroy(mainSaver);
-        }
-
-        GameObject main = service.GetComponent<MainManager>().mainSaver[0];
-        gameObject.transform.position = main.GetComponent<Main>().playerPos;
+        gameObject.transform.position = mainSaver.GetComponent<Main>().playerPos;
         destination = transform.position;
 
     }

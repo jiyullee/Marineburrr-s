@@ -9,12 +9,12 @@ public class TurtleConversation : MonoBehaviour
     [SerializeField] Sprite[] Conversations;
     [SerializeField] GameObject background;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject mainSaver;
+     GameObject mainSaver;
     int sceneNum = 0;
 
     void Start()
     {
-
+        mainSaver = GameObject.FindGameObjectWithTag("Main");
     }
 
     // Update is called once per frame
