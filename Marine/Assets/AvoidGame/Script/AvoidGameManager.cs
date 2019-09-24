@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class AvoidGameManager : MonoBehaviour
 {
     public int Score;
+    [SerializeField] int gameTime;
     [SerializeField] int increaseAmount = 5;
     [SerializeField] int decreaseAmount = 10;
     [SerializeField] GameObject GameOverUI;
@@ -15,6 +16,9 @@ public class AvoidGameManager : MonoBehaviour
     {
         Score = 0;
         Main = GameObject.FindGameObjectWithTag("Main");
+        StartCoroutine(BacktotheMainmenu());
+        //SceneManager.LoadScene("Main");
+
     }
 
     // Update is called once per frame
@@ -49,8 +53,22 @@ public class AvoidGameManager : MonoBehaviour
         Time.timeScale = 1;
         SceneManager.LoadScene("AvoidGame");
     }
-    public void BacktotheMainmenu()
+    IEnumerator BacktotheMainmenu()
     {
+        yield return new WaitForSeconds(gameTime);
+        if(Score >= 0)
+        {
+            if (Main.GetComponent<Main>().level == 2)
+            {
+                Main.GetComponent<Main>().level += 1;
+            }
+            SceneManager.LoadScene("Main");
+        }
+        else if(Score < 0)
+        {
+            GameOverUI.SetActive(true);
+        }
+        
 
     }
 }

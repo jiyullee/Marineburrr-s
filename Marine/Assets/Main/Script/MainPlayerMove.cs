@@ -14,15 +14,30 @@ public class MainPlayerMove : MonoBehaviour
     [SerializeField] GameObject fishConversation;
     [SerializeField] GameObject turtleConversation;
     [SerializeField] GameObject dolphinConversation;
+    [SerializeField] GameObject service;
+     GameObject mainSaver;
 
 
     // Start is called before the first frame update
     private void Start()
     {
-        destination = transform.position;
+        
         originSpeed = speed;
+        service = GameObject.FindGameObjectWithTag("Service");
+        mainSaver = GameObject.FindGameObjectWithTag("Main");
+        if(service.GetComponent<MainManager>().mainSaver.Count == 0)
+        {
+            service.GetComponent<MainManager>().mainSaver.Add(mainSaver);
+        }
+        else
+        {
+            Destroy(mainSaver);
+        }
 
-       //gameObject.transform.position = new Vector3(PlayerPrefs.GetFloat("PlayerPos"), transform.position.y, transform.position.z);
+        GameObject main = service.GetComponent<MainManager>().mainSaver[0];
+        gameObject.transform.position = main.GetComponent<Main>().playerPos;
+        destination = transform.position;
+
     }
 
     // Update is called once per frame
@@ -72,7 +87,7 @@ public class MainPlayerMove : MonoBehaviour
             {
                 background.SetActive(true);
                 speed = 0;
-               //dolphinConversation.SetActive(true);
+               dolphinConversation.SetActive(true);
             }
             else if (hit.collider.gameObject.tag == "Map")
             {

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
-public class TurtleConversation : MonoBehaviour
+public class DolphinConversation : MonoBehaviour
 {
     [SerializeField] Sprite[] Conversations;
     [SerializeField] GameObject background;
@@ -33,7 +32,7 @@ public class TurtleConversation : MonoBehaviour
             gameObject.SetActive(false);
             player.GetComponent<MainPlayerMove>().speed = player.GetComponent<MainPlayerMove>().originSpeed;
             mainSaver.GetComponent<Main>().SavePlayerPos(player.transform.position);
-            SceneManager.LoadScene("AvoidGame");
+            SceneManager.LoadScene("Dolphin");
 
         }
         sceneNum += 1;

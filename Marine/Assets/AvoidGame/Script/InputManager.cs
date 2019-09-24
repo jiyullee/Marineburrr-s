@@ -57,7 +57,7 @@ public class InputManager : MonoBehaviour
                     player.GetComponent<Animator>().SetBool("Right", true);
                 }
                 startPos = touchPos;
-                player.transform.position += diffpos / 10;
+                player.transform.position += diffpos / 50;
             }
         }
     }
