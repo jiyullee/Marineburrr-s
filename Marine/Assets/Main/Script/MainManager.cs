@@ -7,10 +7,10 @@ public class MainManager : MonoBehaviour
 {
  
     public GameObject player;
-    public int level = 1;
+    public List<GameObject> mainSaver = new List<GameObject>();
+
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
     }
     private void Update()
     {

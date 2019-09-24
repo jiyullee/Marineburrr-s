@@ -9,6 +9,7 @@ public class ClownfishConversation : MonoBehaviour
     [SerializeField] Sprite[] Conversations;
     [SerializeField] GameObject background;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject mainSaver;
     int sceneNum = 0;
 
     void Start()
@@ -31,6 +32,7 @@ public class ClownfishConversation : MonoBehaviour
             sceneNum = 0;
             gameObject.SetActive(false);
             player.GetComponent<MainPlayerMove>().speed = player.GetComponent<MainPlayerMove>().originSpeed;
+            mainSaver.GetComponent<Main>().SavePlayerPos(player.transform.position);
             SceneManager.LoadScene("WhiteClownfish");
 
         }

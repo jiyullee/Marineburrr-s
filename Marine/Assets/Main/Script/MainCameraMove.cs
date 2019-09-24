@@ -5,7 +5,8 @@ using UnityEngine;
 public class MainCameraMove : MonoBehaviour
 {
     // Start is called before the first frame update
-    float xPos;
+
+    [SerializeField] GameObject player;
 
     // Start is called before the first frame update
     private void Start()
@@ -16,7 +17,12 @@ public class MainCameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xPos = Mathf.Clamp(transform.position.x, 0, 93.4f);
-        transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+      
+   
+        transform.position = player.transform.position + new Vector3(3.63f, 2.4f, -10);
+        //if(transform.position.x != xPos)
+        //{
+        //    transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+        //}
     }
 }
