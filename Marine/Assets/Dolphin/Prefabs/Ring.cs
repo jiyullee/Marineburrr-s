@@ -14,6 +14,7 @@ public class Ring : MonoBehaviour
     {      
         dolphin_LevelManager = GameObject.FindGameObjectWithTag("Service").GetComponent<Dolphin_LevelManager>();
     }
+    /*
     private void OnEnable()
     {        
         StartCoroutine(DestroySelf());
@@ -24,7 +25,7 @@ public class Ring : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
     }
-    
+    */
     public void ChangeisReach()
     {
         isReached = true;

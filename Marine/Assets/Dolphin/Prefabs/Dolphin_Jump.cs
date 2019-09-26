@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Dolphin_Jump : MonoBehaviour
 {
-    public float speed;
     public float jumpPower;
     public bool isGround;
     public bool twoJump;
@@ -29,7 +28,6 @@ public class Dolphin_Jump : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
         isGround = Physics2D.OverlapCircle(ground.position, checkRadius, layer);
         if (isGround && Input.GetKeyDown(KeyCode.A) && jumpCount > 0)
         {

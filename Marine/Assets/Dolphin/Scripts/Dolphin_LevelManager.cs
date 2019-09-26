@@ -14,17 +14,20 @@ public class Dolphin_LevelManager : MonoBehaviour
     int maxScore = 100;
     public Text textScore;
     Main main;
+    public Image FirstTutorialImage;
+    public Image SecondTutorialImage;
+    TutorialManager tutorialManager;
     private void Start()
     {
         StartCoroutine(SpawnRing());
     }
     void Awake()
     {
-        main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
+        tutorialManager = GetComponent<TutorialManager>();
         player = Instantiate(playerPrefab);
+      //  main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
     }
 
-    
     IEnumerator SpawnRing()
     {
         while (true)
@@ -37,7 +40,14 @@ public class Dolphin_LevelManager : MonoBehaviour
                      Instantiate(ringPrefab, new Vector3(xPos, yPos[0], 0), Quaternion.identity);
                 else
                     Instantiate(ringPrefab, new Vector3(xPos, yPos[1], 0), Quaternion.identity);
-                xPos -= 400;
+                if (tutorialManager.getIsChange())
+                {
+                    xPos -= 1000;
+                }
+                else
+                {                   
+                    xPos -= 600;
+                }
             }
             yield return new WaitForSeconds(ringDelay);
         }
@@ -49,9 +59,9 @@ public class Dolphin_LevelManager : MonoBehaviour
         if (score >= maxScore)
         {
             score = maxScore;
-            if(main.level == 1)
-                main.levelUp();
-            main.LoadScene();
+          ///  if(main.level == 1)
+         //       main.levelUp();
+          //  main.LoadScene();
         }
           
         textScore.text = score.ToString();
