@@ -44,7 +44,7 @@ public class DolphinConversation : MonoBehaviour
         {
            
             mainSaver.GetComponent<Main>().SavePlayerPos(player.transform.position);
-            SceneManager.LoadScene("Dolphin");
+            SceneManager.LoadScene("LoadingScene");
 
         }
         else if (sceneNum == Conversations.Length - 1)

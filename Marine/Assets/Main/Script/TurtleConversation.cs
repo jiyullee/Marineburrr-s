@@ -44,7 +44,7 @@ public class TurtleConversation : MonoBehaviour
         {
             
             mainSaver.GetComponent<Main>().SavePlayerPos(player.transform.position);
-            SceneManager.LoadScene("AvoidGame");
+            SceneManager.LoadScene("LoadingScene");
 
         }
         else if (sceneNum == Conversations.Length - 1)
