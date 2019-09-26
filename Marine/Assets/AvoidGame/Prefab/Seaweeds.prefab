@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   service: {fileID: 0}
   canCrash: 1
+  increasePoint: {fileID: 8300000, guid: 546ef55663dedca43a08ee5e5301c8be, type: 3}
 --- !u!50 &-5599595847338752789
 Rigidbody2D:
   serializedVersion: 4
@@ -111,7 +112,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

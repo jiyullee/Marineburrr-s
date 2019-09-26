@@ -26,6 +26,21 @@ public class MainPlayerMove : MonoBehaviour
         mainSaver = GameObject.FindGameObjectWithTag("Main");
         gameObject.transform.position = mainSaver.GetComponent<Main>().playerPos;
         destination = transform.position;
+        if(mainSaver.GetComponent<Main>().dolphin == true)
+        {
+            dolphinConversation.SetActive(true);
+            OpenBG();
+        }
+        else if(mainSaver.GetComponent<Main>().turtle == true)
+        {
+            turtleConversation.SetActive(true);
+            OpenBG();
+        }
+        else if(mainSaver.GetComponent<Main>().crownFish == true)
+        {
+            fishConversation.SetActive(true);
+            OpenBG();
+        }
 
     }
 
@@ -83,5 +98,11 @@ public class MainPlayerMove : MonoBehaviour
                 destination = new Vector3(pos.x, transform.position.y, transform.position.z);
             }
         }
+    }
+
+    void OpenBG()
+    {
+        background.SetActive(true);
+        speed = 0;
     }
 }

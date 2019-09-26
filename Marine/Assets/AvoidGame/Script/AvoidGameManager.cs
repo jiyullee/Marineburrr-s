@@ -56,17 +56,18 @@ public class AvoidGameManager : MonoBehaviour
     IEnumerator BacktotheMainmenu()
     {
         yield return new WaitForSeconds(gameTime);
-        if(Score >= 0)
+        if(Score >= 100)
         {
             if (Main.GetComponent<Main>().level == 2)
             {
                 Main.GetComponent<Main>().level += 1;
             }
+            Main.GetComponent<Main>().turtle = true;
             Main.GetComponent<Main>().LoadScene();
         }
         else if(Score < 0)
         {
-            GameOverUI.SetActive(true);
+            Main.GetComponent<Main>().LoadScene();
         }
         
 

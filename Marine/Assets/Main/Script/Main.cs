@@ -7,6 +7,9 @@ public class Main : MonoBehaviour
     public Vector3 playerPos;
     public int level = 1;
     GameObject service;
+    public bool dolphin = false;
+    public bool turtle = false;
+    public bool crownFish = false;
     // Start is called before the first frame update
     private void Awake()
     {
