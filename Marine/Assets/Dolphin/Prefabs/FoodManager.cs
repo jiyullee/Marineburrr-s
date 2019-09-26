@@ -7,8 +7,12 @@ public class FoodManager : MonoBehaviour
     public GameObject[] feed;
     public float feedDelay;
     GameObject player;
+    int feedProperty = 70;
+    TutorialManager tutorialManager;
+    public List<GameObject> feedList = new List<GameObject>();
     void Start()
     {
+        tutorialManager = GetComponent<TutorialManager>();
         StartCoroutine(SpawnFeed());
     }
 
@@ -24,10 +28,21 @@ public class FoodManager : MonoBehaviour
         while (true)
         {
             int rand = Random.Range(0, 101);
-            if(rand <= 70)
-                Instantiate(feed[Random.Range(0, 2)], new Vector3(xPos, yPos, 0), Quaternion.identity);
+            if(rand <= feedProperty)
+            {
+                GameObject temp = Instantiate(feed[Random.Range(0, 2)], new Vector3(xPos, yPos, 0), Quaternion.identity);
+                feedList.Add(temp);
+            }
+                
             yield return new WaitForSeconds(feedDelay);
-            xPos -= 300.0f;
+            if (tutorialManager.getIsChange())
+            {
+                xPos -= 1000.0f;               
+            }
+            else
+                xPos -= 300.0f;
+
+
         }
     }
 }

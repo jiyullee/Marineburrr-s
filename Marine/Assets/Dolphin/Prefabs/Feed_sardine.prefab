@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   increase: 2
+  decrease: 5
 --- !u!60 &5613248312234294603
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644819b72f7e68442b8b4228d5c39047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increase: 30
+  increase: 3
   decrease: 3
 --- !u!1 &8431577248847930613
 GameObject:
@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54c83f5da14e9247bb5c6c429990627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 300
 --- !u!114 &2465060062715523159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9fbb95a68d2874795c72cb2450ed4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
   jumpPower: 1000
   isGround: 0
   twoJump: 0
