@@ -8,44 +8,75 @@ public class PinkSharkMove : MonoBehaviour
     Transform target;
     float a;
     float b;
+    Color color;
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2 dir = target.position - transform.position;
         b = Mathf.Sign(dir.x);
+        color = GetComponent<SpriteRenderer>().color;
+        StartCoroutine(Follow());
+
+        
     }
 
-    private void Update()
+    IEnumerator FadeOut()
     {
-
-        bool direction = GetComponent<Enemy>().direction;
-        if (direction)
+        for (float i = 1f; i >= 0; i -= 0.1f)
         {
-            transform.rotation = new Quaternion(0, 0, 0, 0);
+            print(1);
+            Color col = new Vector4(1, 1, 1, i);
+            GetComponent<SpriteRenderer>().color = col;
+            yield return 0;
         }
-        else
-        {
-            transform.rotation = new Quaternion(0, 180, 0, 0);
-        }
-        if (target != null)
-        {
-            Vector2 dir = target.position - transform.position;
-            transform.position += (target.position - transform.position).normalized * speed * Time.deltaTime;
+       
+    }
 
-            float a = Mathf.Sign(dir.x);
-            if (a != b)
+    IEnumerator Follow()
+    {
+        while (true)
+        {
+            yield return null;
+            bool direction = GetComponent<Enemy>().direction;
+            if (direction)
             {
-                if (GetComponent<Enemy>().direction)
-                {
-                    GetComponent<Enemy>().direction = false;
-                }
-                else
-                {
-                    GetComponent<Enemy>().direction = true;
-                }
+                transform.rotation = new Quaternion(0, 0, 0, 0);
+            }
+            else
+            {
+                transform.rotation = new Quaternion(0, 180, 0, 0);
+            }
+            if (target != null)
+            {
+                Vector2 dir = target.position - transform.position;
+                transform.position += (target.position - transform.position).normalized * speed * Time.deltaTime;
 
-                b = a;
+                float a = Mathf.Sign(dir.x);
+                if (Mathf.Abs(dir.x) <= 5.0f  && Mathf.Abs(dir.y) <= 5.0f)
+                {
+                    for (float i = 1f; i >= 0; i -= 0.05f)
+                    {
+                        Color col = new Vector4(1, 1, 1, i);
+                        GetComponent<SpriteRenderer>().color = col;
+                       
+                    }
+                    Destroy(gameObject);
+                }
+                if (a != b)
+                {
+                    if (GetComponent<Enemy>().direction)
+                    {
+                        GetComponent<Enemy>().direction = false;
+                    }
+                    else
+                    {
+                        GetComponent<Enemy>().direction = true;
+                    }
+
+                    b = a;
+                }
             }
         }
+        
     }
 }

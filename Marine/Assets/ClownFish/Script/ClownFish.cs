@@ -9,8 +9,8 @@ public class ClownFish : MonoBehaviour
     public bool direction;
     public Animator left;
     public Animator right;
-    public float speed;
     GameObject service;
+    bool canFire = true;
     private void Awake()
     {
         service = GameObject.FindGameObjectWithTag("Service");
@@ -43,5 +43,13 @@ public class ClownFish : MonoBehaviour
         {
             service.GetComponent<LevelManager>().score -= collider.GetComponent<Enemy>().decrease;
         }
+    }
+    public bool getDirection()
+    {
+        return direction;
+    }
+    public void setDirection(bool b)
+    {
+        direction = b;
     }
 }

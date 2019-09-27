@@ -11,6 +11,9 @@ public class Feed : MonoBehaviour
     float yPos;
     float rand;
     TutorialManager tutorialManager;
+    bool isCrash;
+    bool isDownScore;
+    bool isScore;
     void Awake()
     {
         rand = Random.Range(80, 700);
@@ -38,5 +41,35 @@ public class Feed : MonoBehaviour
             yield return null;
         }
     }
-   
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Player" && !tutorialManager.getIsChange() && !isScore)
+        {
+            isCrash = true;
+            isScore = true;
+            isDownScore = true;
+            service.GetComponent<Dolphin_LevelManager>().IncreaseScore(increase);
+            Destroy(gameObject);
+        }
+        else if (collider.gameObject.tag == "Player" && tutorialManager.getIsChange() && !isDownScore)
+        {
+            isCrash = true;
+            isScore = true;
+            isDownScore = true;
+            service.GetComponent<Dolphin_LevelManager>().DecreaseScore(decrease);
+        }       
+    }
+    public bool getIsCrash()
+    {
+        return isCrash;
+    }
+    public bool getIsScore()
+    {
+        return isScore;
+    }
+    public bool getIsDownScore()
+    {
+        return isDownScore;
+    }
 }

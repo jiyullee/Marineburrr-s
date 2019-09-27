@@ -37,10 +37,10 @@ public class FoodManager : MonoBehaviour
             yield return new WaitForSeconds(feedDelay);
             if (tutorialManager.getIsChange())
             {
-                xPos -= 1000.0f;               
+                xPos -= 800.0f;               
             }
             else
-                xPos -= 300.0f;
+                xPos -= 600.0f;
 
 
         }

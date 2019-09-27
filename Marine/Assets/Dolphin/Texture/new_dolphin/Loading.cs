@@ -2,19 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.SceneManagement;
 public class Loading : MonoBehaviour
 {
-    public Image image;
-    int p = 4;
+    public string nextSceneName;
+    public GameObject backGround;
+    Image backImage;
+    public Image loadingBar;
+    public Sprite loadingImage;
+    public int p;
+    public int p1;
+    public int p2;
+    public float pointA;
+    public float pointB;
+    public float pointC;
+    public float pointD;
     bool isDone;
     float time = 0.0f;
+    float ftime = 0;
     AsyncOperation async_operation;
 
     void Start()
     {
-        StartCoroutine(LoadScene("Dolphin"));
+        backImage = backGround.GetComponent<Image>();
+        StartCoroutine(LoadScene(nextSceneName));
     }
    
    
@@ -27,7 +38,7 @@ public class Loading : MonoBehaviour
             isDone = true;
             while(async_operation.progress < 0.9f)
             {
-                image.fillAmount = async_operation.progress;
+                loadingBar.fillAmount = async_operation.progress;
                 yield return true;
             }
         }
@@ -35,12 +46,16 @@ public class Loading : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime / p;
-        image.fillAmount = time;      
-        if (0.3f <= image.fillAmount && image.fillAmount <= 0.5f)
-            p = 12;
-        else if (0.7f <= image.fillAmount && image.fillAmount <= 0.9f)
-            p = 4;
-        if (time >= 6.0f)
+        ftime += Time.deltaTime;
+        loadingBar.fillAmount = time;      
+        if (pointA <= loadingBar.fillAmount && loadingBar.fillAmount <= pointB)
+            p = p1;
+        else if (pointC <= loadingBar.fillAmount && loadingBar.fillAmount < pointD)
+        {
+            backImage.sprite = loadingImage;           
+            p = p2;
+        }      
+        else if (loadingBar.fillAmount >= 1.0f)
         {
             async_operation.allowSceneActivation = true;
         }

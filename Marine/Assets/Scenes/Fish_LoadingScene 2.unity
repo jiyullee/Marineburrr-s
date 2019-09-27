@@ -371,7 +371,6 @@ GameObject:
   - component: {fileID: 1843229381}
   - component: {fileID: 1843229380}
   - component: {fileID: 1843229379}
-  - component: {fileID: 1843229382}
   m_Layer: 0
   m_Name: Service
   m_TagString: Untagged
@@ -391,7 +390,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed35e45ff13f0394dab43fdd0b6d00d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 3522382336078744071}
+  nextSceneName: Main
+  backGround: {fileID: 2029964655}
+  loadingBar: {fileID: 3522382336078744071}
+  loadingImage: {fileID: 21300000, guid: 5d0dfe0db93dbd44aa519255c04f887e, type: 3}
+  p: 5
+  p1: 5
+  p2: 6
+  pointA: 0.1
+  pointB: 0.2
+  pointC: 0.3
+  pointD: 1
 --- !u!212 &1843229380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -454,20 +463,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1843229382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843229378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04e7a6e44890e047a8ff09034f9fa45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadingImage: {fileID: 21300000, guid: d225d0e2bdf6e6b4aa161cfc00441370, type: 3}
-  background: {fileID: 2029964655}
 --- !u!1 &2029964655
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +520,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ca5ab70b54609ff4295c64178f3a9921, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d0dfe0db93dbd44aa519255c04f887e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

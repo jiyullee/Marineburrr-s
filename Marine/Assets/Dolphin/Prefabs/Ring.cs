@@ -9,7 +9,9 @@ public class Ring : MonoBehaviour
     public float speed;
     public float lifeTime;
     bool isReached = false;
-
+    bool isCrash;
+    bool isDownScore;
+    bool isScore;
     private void Start()
     {      
         dolphin_LevelManager = GameObject.FindGameObjectWithTag("Service").GetComponent<Dolphin_LevelManager>();
@@ -35,5 +37,32 @@ public class Ring : MonoBehaviour
     {
         return isReached;
     }
-   
+    public bool getIsCrash()
+    {
+        return isCrash;
+    }
+    public void setIsDownScore(bool a)
+    {
+        isDownScore = a;
+    }
+    public void setIsScore(bool a)
+    {
+        isScore = a;
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.tag == "Player")
+        {
+            isCrash = true;
+        }
+    }
+    public bool getIsScore()
+    {
+        return isScore;
+    }
+    public bool getIsDownScore()
+    {
+        return isDownScore;
+    }
 }
+

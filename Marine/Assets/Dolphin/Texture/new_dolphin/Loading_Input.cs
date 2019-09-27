@@ -15,11 +15,6 @@ public class Loading_Input : MonoBehaviour
         {        
             background.GetComponent<Image>().sprite = loadingImage;           
         }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-           
-            background.GetComponent<Image>().sprite = loadingImage;                   
-        }       
-            
+         
     }
 }

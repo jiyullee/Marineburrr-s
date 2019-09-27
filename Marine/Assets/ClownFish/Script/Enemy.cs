@@ -10,8 +10,10 @@ public class Enemy : MonoBehaviour
     public int increase;
     public int HP;
     public GameObject service;
+    Color color;
     private void Awake()
     {
+        color = GetComponent<SpriteRenderer>().color;
         service = GameObject.FindGameObjectWithTag("Service");
 
     }
@@ -23,6 +25,10 @@ public class Enemy : MonoBehaviour
     IEnumerator DisableSelf()
     {
         yield return new WaitForSeconds(lifeTime);
-        Destroy(gameObject);
+        for (float i = 1f; i >= 0; i -= 0.02f)
+        {          
+            GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, i);
+        }
+       // Destroy(gameObject);
     }
 }
