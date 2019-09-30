@@ -16,15 +16,15 @@ public class Dolphin_LevelManager : MonoBehaviour
     public Image FirstTutorialImage;
     public Image SecondTutorialImage;
     TutorialManager tutorialManager;
-    private void Start()
-    {
-        StartCoroutine(SpawnRing());
-    }
+    SoundManager soundManager;
+   
     void Awake()
     {
         tutorialManager = GetComponent<TutorialManager>();
         player = Instantiate(playerPrefab);
-      //  main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
+        soundManager = GetComponentInChildren<SoundManager>();
+        StartCoroutine(SpawnRing());
+        //  main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
     }
 
     IEnumerator SpawnRing()
@@ -41,7 +41,7 @@ public class Dolphin_LevelManager : MonoBehaviour
                     Instantiate(ringPrefab, new Vector3(xPos, yPos[1], 0), Quaternion.identity);
                 if (tutorialManager.getIsChange())
                 {                   
-                    xPos -= 1000;
+                    xPos -= 1200;
                 }
                 else
                 {                   
@@ -66,9 +66,11 @@ public class Dolphin_LevelManager : MonoBehaviour
     public void DecreaseScore(int n)
     {
         score -= n;
+        soundManager.TurnOnMinusSound();
     }
     public void IncreaseScore(int n)
     {
         score += n;
+        soundManager.TurnOnPlusSound();
     }
 }

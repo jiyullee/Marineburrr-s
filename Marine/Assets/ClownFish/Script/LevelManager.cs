@@ -12,10 +12,10 @@ public class LevelManager : MonoBehaviour
     public int score;
     public Text scoreText;
     float time = 0;
-    
+    SoundManager soundManager;
     void Start()
     {
-
+        soundManager = GetComponentInChildren<SoundManager>();
         StartCoroutine(SpawnFood());
     }
 
@@ -36,13 +36,22 @@ public class LevelManager : MonoBehaviour
         {
             for(int i = 0; i < 3; i++)
             {
-                float xPos = Random.Range(-640.0f, 640.0f);
-                float yPos = Random.Range(-360.0f, 360.0f);
+                float xPos = Random.Range(0.0f,1280.0f);
+                float yPos = Random.Range(0.0f, 720.0f);
                 Instantiate(food, new Vector3(xPos, yPos, 0), Quaternion.identity);
             }
           
             yield return new WaitForSeconds(foodDelay);
         }
     }
-   
+    public void DecreaseScore(int n)
+    {
+        score -= n;
+        soundManager.TurnOnMinusSound();
+    }
+    public void IncreaseScore(int n)
+    {
+        score += n;
+        soundManager.TurnOnPlusSound();
+    }
 }

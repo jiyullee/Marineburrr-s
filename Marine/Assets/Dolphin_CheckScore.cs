@@ -10,12 +10,13 @@ public class Dolphin_CheckScore : MonoBehaviour
     TutorialManager tutorialManager;
     GameObject service;
     bool isCrash;
-
+    Dolphin_EffectManager effectManager;
     private void Start()
     {
         service = GameObject.FindGameObjectWithTag("Service");
         dolphin_LevelManager = service.GetComponent<Dolphin_LevelManager>();
         tutorialManager = service.GetComponent<TutorialManager>();
+        effectManager = service.GetComponent<Dolphin_EffectManager>();
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -29,6 +30,7 @@ public class Dolphin_CheckScore : MonoBehaviour
                     {
                         collider.gameObject.GetComponent<Ring>().setIsScore(true);
                         collider.gameObject.GetComponent<Ring>().setIsDownScore(true);
+                        Instantiate(effectManager.GetRingPass_Effect(), transform.position - new Vector3(50,0,0), Quaternion.identity);
                         dolphin_LevelManager.IncreaseScore(increase);
                     }
                 }

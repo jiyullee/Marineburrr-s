@@ -17,9 +17,10 @@ public class Dolphin_Jump : MonoBehaviour
     public new Rigidbody2D rigidbody2D;
     Dolphin_Input dolphin_Input;
     Dolphin_Animation dolphin_Animation;
-
+    JumpButton jumpButton;
     void Awake()
-    {        
+    {
+        jumpButton = GameObject.FindGameObjectWithTag("JumpButton").GetComponent<JumpButton>();
         dolphin_Animation = GetComponent<Dolphin_Animation>();
         dolphin_Input = GetComponent<Dolphin_Input>();
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -68,17 +69,18 @@ public class Dolphin_Jump : MonoBehaviour
     {
         if (isGround && jumpCount > 0)
         {
-            jump = true;
+            jumpPower = 1000;
             rigidbody2D.velocity = Vector2.up * jumpPower;
+            dolphin_Animation.Jump();          
         }
     }
     public void CheckTwoJump()
     {
-        if (isGround && jumpCount > 0)
+        if (!isGround && jumpCount > 0)
         {
-            twoJump = true;
-            dolphin_Animation.TwoJump();
+            jumpPower = 900;
             rigidbody2D.velocity = Vector2.up * jumpPower;
+            dolphin_Animation.TwoJump();
         }
     }
 }

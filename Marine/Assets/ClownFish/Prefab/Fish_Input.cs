@@ -11,7 +11,7 @@ public class Fish_Input : MonoBehaviour
     public float moveSpeed;
     Transform _transform;
     bool canFire = true;
-    void Start()
+    void Awake()
     {
         _transform = transform;
         _moveVector = Vector3.zero;
@@ -22,21 +22,18 @@ public class Fish_Input : MonoBehaviour
     void Update()
     {
         HandleInput();
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -640.0f, 640.0f), Mathf.Clamp(transform.position.y, -360.0f, 360.0f), 0);
+       
     }
     private void FixedUpdate()
     {
         Move();
-        if(Input.touchCount > 0)
-        {
-            if(canFire && fish_TutorialManager.GetBulletOn())
-                StartCoroutine(delay());
-        }
+       /*
         else if (Input.GetMouseButtonDown(1))
         {
             if (canFire && fish_TutorialManager.GetBulletOn())
                 StartCoroutine(delay());
         }
+        */
     }
     IEnumerator delay()
     {
@@ -58,7 +55,7 @@ public class Fish_Input : MonoBehaviour
         {
             GetComponent<ClownFish>().setDirection(true);
         }
-        else
+        else if(h > 0)
         {
             GetComponent<ClownFish>().setDirection(false);
         }

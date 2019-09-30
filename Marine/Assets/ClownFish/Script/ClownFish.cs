@@ -28,7 +28,7 @@ public class ClownFish : MonoBehaviour
             left.gameObject.SetActive(false);
         }
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -640.0f, 640.0f), Mathf.Clamp(transform.position.y, -360.0f, 360.0f), 0);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0f, 1280.0f), Mathf.Clamp(transform.position.y, 0.0f, 720.0f), 0);
         
     }
 
@@ -36,12 +36,12 @@ public class ClownFish : MonoBehaviour
     {
         if(collider.gameObject.tag == "Food")
         {
-            service.GetComponent<LevelManager>().score += collider.GetComponent<Food>().increase;
+            service.GetComponent<LevelManager>().IncreaseScore(collider.GetComponent<Food>().increase);
             Destroy(collider.gameObject);
         }   
         if(collider.gameObject.tag == "Enemy")
         {
-            service.GetComponent<LevelManager>().score -= collider.GetComponent<Enemy>().decrease;
+            service.GetComponent<LevelManager>().DecreaseScore(collider.GetComponent<Enemy>().decrease);
         }
     }
     public bool getDirection()

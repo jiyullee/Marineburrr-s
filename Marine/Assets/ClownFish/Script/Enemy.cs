@@ -9,13 +9,14 @@ public class Enemy : MonoBehaviour
     public int decrease;
     public int increase;
     public int HP;
-    public GameObject service;
+    GameObject service;
     Color color;
+    Fish_EffectManager effectManager;
     private void Awake()
     {
         color = GetComponent<SpriteRenderer>().color;
         service = GameObject.FindGameObjectWithTag("Service");
-
+        effectManager = service.GetComponent<Fish_EffectManager>();
     }
     private void OnEnable()
     {
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
         {          
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, i);
         }
-       // Destroy(gameObject);
+        Instantiate(effectManager.GetDead_Effect(), transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

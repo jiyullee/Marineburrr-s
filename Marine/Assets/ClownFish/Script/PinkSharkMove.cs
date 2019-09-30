@@ -9,12 +9,16 @@ public class PinkSharkMove : MonoBehaviour
     float a;
     float b;
     Color color;
+    GameObject service;
+    Fish_EffectManager effectManager;
     private void Start()
     {
+        service = GameObject.FindGameObjectWithTag("Service");
         target = GameObject.FindGameObjectWithTag("Player").transform;
         Vector2 dir = target.position - transform.position;
         b = Mathf.Sign(dir.x);
         color = GetComponent<SpriteRenderer>().color;
+        effectManager = service.GetComponent<Fish_EffectManager>();
         StartCoroutine(Follow());
 
         
@@ -60,6 +64,7 @@ public class PinkSharkMove : MonoBehaviour
                         GetComponent<SpriteRenderer>().color = col;
                        
                     }
+                    Instantiate(effectManager.GetDead_Effect(), transform.position, Quaternion.identity);
                     Destroy(gameObject);
                 }
                 if (a != b)

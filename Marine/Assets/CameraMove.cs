@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+    public GameObject service;
     GameObject player;
-
-    private void Start()
+    private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = service.GetComponent<Dolphin_LevelManager>().player;
     }
     void Update()
     {

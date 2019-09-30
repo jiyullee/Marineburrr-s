@@ -12,75 +12,85 @@ public class TutorialManager : MonoBehaviour
     Main main;
     public GameObject gameOverImage;
     public string nextSceneName;
+    SoundManager soundManager;
+    public GameObject gameAudioObject;
+    AudioSource audioSource;
+    bool loadTutorial = true;
     void Start()
     {
+        audioSource = gameAudioObject.GetComponent<AudioSource>();
+        soundManager = GetComponentInChildren<SoundManager>();
         foodManager = GetComponent<FoodManager>();
-        StartCoroutine(LoadTutorial());
         main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
+        StartCoroutine(TimeCheck());
     }
 
-    IEnumerator LoadTutorial()
+    IEnumerator TimeCheck()
     {
         while (true)
         {
-            yield return null;
-            if (isChange)
+            time += Time.deltaTime;
+            // 110 141
+            if (time >= 110.0f && loadTutorial)
             {
-                tutorialObject.SetActive(true);
-                Time.timeScale = 0;
-                for(int i = 0; i < foodManager.feedList.Count; i++)
-                {
-                    Destroy(foodManager.feedList[i]);
-                }
-                StartCoroutine(DisableImage());
-                break;
+                isChange = true;                
+                StartCoroutine(LoadTutorial());
             }
-            
+            else if (time >= 141.0f)
+            {
+                main.dolphin = true;
+                if (main.level == 1)
+                    main.levelUp();
+                StartCoroutine(GameOver());
+                SceneManager.LoadScene(nextSceneName);
+            }
+           
+            yield return null;
         }
+
+
     }
 
+
+    IEnumerator LoadTutorial()
+    {
+        tutorialObject.SetActive(true);
+        Time.timeScale = 0;
+        audioSource.Pause();
+        for (int i = 0; i < foodManager.feedList.Count; i++)
+        {
+            Destroy(foodManager.feedList[i]);
+        }     
+        loadTutorial = false;
+        yield return null;
+    }
+    /*
    IEnumerator DisableImage()
     {
         while (true)
         {
-            yield return null;
+            yield return null;            
             if (Input.GetKeyDown(KeyCode.S))
             {
+                audioSource.Play();
                 Time.timeScale = 1;
                 tutorialObject.SetActive(false);
                 break;
-            }
-            if(Input.touchCount > 0)
-            {
-                Time.timeScale = 1;
-                tutorialObject.SetActive(false);
-                break;
-            }
+            }         
            
         }
     }
-
-    private void Update()
+    */
+    public void PlayButton()
     {
-        time += Time.deltaTime;
-        if(time >= 110.0f)
-        {
-            isChange = true;
-        }
-        if (time >= 141.0f)
-        {
-            main.dolphin = true;
-            if (main.level == 1)
-                main.levelUp();
-            StartCoroutine(GameOver());
-            SceneManager.LoadScene(nextSceneName);
-        }
-
+        audioSource.Play();
+        Time.timeScale = 1;
+        tutorialObject.SetActive(false);
     }
     IEnumerator GameOver()
     {
         gameOverImage.SetActive(true);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(5.0f);
    
     }
     public bool getIsChange()
