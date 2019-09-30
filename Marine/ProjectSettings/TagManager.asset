@@ -21,6 +21,7 @@ TagManager:
   - PassCheck
   - Enemy
   - JoyStick
+  - JumpButton
   layers:
   - Default
   - TransparentFX
@@ -58,6 +59,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: 
+  - name: 1
     uniqueID: 3918305333
     locked: 0

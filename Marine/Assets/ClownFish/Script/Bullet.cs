@@ -8,12 +8,23 @@ public class Bullet : MonoBehaviour
     public float speed;
     GameObject player;
     bool direction;
+    GameObject service;
+    LevelManager levelManager;
+    SoundManager soundManager;
+    AudioSource audioSource;
+    Fish_EffectManager effectManager;
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        service = GameObject.FindGameObjectWithTag("Service");
+        levelManager = service.GetComponent<LevelManager>();
+        soundManager = service.GetComponent<SoundManager>();
         player = GameObject.FindGameObjectWithTag("Player");
+        effectManager = service.GetComponent<Fish_EffectManager>();
     }
     private void OnEnable()
     {
+        audioSource.Play();
         direction = player.GetComponent<ClownFish>().direction;
         StartCoroutine(DisableSelf());
     }
@@ -38,6 +49,12 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
             collider.GetComponent<Enemy>().HP--;
+            if(collider.GetComponent<Enemy>().HP == 0)
+            {
+                Instantiate(effectManager.GetDead_Effect(), transform.position, Quaternion.identity);
+                levelManager.IncreaseScore(collider.GetComponent<Enemy>().increase);
+                Destroy(collider.gameObject);
+            }
         }
     }
 }

@@ -21,16 +21,16 @@ public class EnemyManager : MonoBehaviour
             float yPos;
             if(leftOrRight == 0)
             {
-                xPos = -670.0f;
-                yPos = Random.Range(-320.0f, 320.0f);
+                xPos = 0;
+                yPos = Random.Range(0, 720.0f);
                 GameObject temp = Instantiate(enemy[SelectEnemy()], new Vector3(xPos, yPos, 0), Quaternion.identity);
                 temp.GetComponent<Enemy>().direction = true;
             }
             else
             {
                 
-                xPos = 670.0f;
-                yPos = Random.Range(-320.0f, 320.0f);
+                xPos = 1280.0f;
+                yPos = Random.Range(0, 720.0f);
                 GameObject temp = Instantiate(enemy[SelectEnemy()], new Vector3(xPos, yPos, 0), Quaternion.identity);
                 temp.GetComponent<Enemy>().direction = false;
             }
@@ -55,8 +55,5 @@ public class EnemyManager : MonoBehaviour
             i++;
         }
     }
-    void Update()
-    {
-        
-    }
+   
 }

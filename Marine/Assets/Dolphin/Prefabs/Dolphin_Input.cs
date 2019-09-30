@@ -9,11 +9,9 @@ public class Dolphin_Input : MonoBehaviour
     public bool key_D_down;
     public bool key_D_up;
     Dolphin_Jump dolphin_Jump;
-    Dolphin_Animation dolphin_Animation;
-    GameObject player;    
+    Dolphin_Animation dolphin_Animation; 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         dolphin_Jump = GetComponent<Dolphin_Jump>();
         dolphin_Animation = GetComponent<Dolphin_Animation>();
     }
@@ -31,7 +29,13 @@ public class Dolphin_Input : MonoBehaviour
            
         }
             
-
-
+    }
+    public void Slide()
+    {
+        dolphin_Animation.Slide();
+    }
+    public void StandUp()
+    {
+        dolphin_Animation.StandUp();
     }
 }

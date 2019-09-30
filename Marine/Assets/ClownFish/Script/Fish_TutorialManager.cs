@@ -10,69 +10,86 @@ public class Fish_TutorialManager : MonoBehaviour
     bool bulletOn;
     public string nextSceneName;
     public GameObject gameOverImage;
-
+    SoundManager soundManager;
+    public GameObject gameAudioObject;
+    AudioSource audioSource;
+    public GameObject shootButton;
+    bool loadTutorial = true;
+    public Canvas canvas;
     void Start()
     {
-        StartCoroutine(LoadTutorial());
+
+        audioSource = gameAudioObject.GetComponent<AudioSource>();
+        soundManager = GetComponent<SoundManager>();       
         main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
+        StartCoroutine(TimeCheck());
     }
 
-    IEnumerator LoadTutorial()
+    IEnumerator TimeCheck()
     {
         while (true)
         {
-            yield return null;
-            if (bulletOn)
+            time += Time.deltaTime;
+            //63 105
+            if (time >= 63.0f && loadTutorial)
             {
-                tutorialObject.SetActive(true);
-                Time.timeScale = 0;
-                StartCoroutine(DisableImage());
-                break;
+                bulletOn = true;
+                StartCoroutine(LoadTutorial());
             }
-
+            else if (time >= 105.0f)
+            {
+                StartCoroutine(GameOver());
+                main.crownFish = true;
+                SceneManager.LoadScene(nextSceneName);
+            }
+           
+            yield return null;
         }
+        
+        
     }
-
+    IEnumerator LoadTutorial()
+    {
+        tutorialObject.SetActive(true);
+        canvas.GetComponent<Canvas>().sortingOrder = 6;
+        Time.timeScale = 0;
+        audioSource.Pause();
+        loadTutorial = false;
+        yield return null;
+       // StartCoroutine(DisableImage());
+    }
+    /*
     IEnumerator DisableImage()
     {
         while (true)
         {
-            yield return null;
-            if (Input.touchCount > 0)
-            {
-                Time.timeScale = 1;
-                tutorialObject.SetActive(false);
-                break;
-            }
+            yield return null;           
             if (Input.GetKeyDown(KeyCode.S))
             {
+                soundManager.TurnOnClickSound();
                 Time.timeScale = 1;
+                shootButton.SetActive(true);
+                audioSource.Play();
                 tutorialObject.SetActive(false);
                 break;
             }
 
         }
     }
-
-    private void Update()
+    */
+    public void PlayButton()
     {
-        time += Time.deltaTime;
-        if (time >= 63.0f)
-        {
-            bulletOn = true;            
-        }
-        if (time >= 105.0f)
-        {
-            StartCoroutine(GameOver());
-            main.crownFish = true;
-            SceneManager.LoadScene(nextSceneName);
-        }
+        audioSource.Play();
+        Time.timeScale = 1;
+        shootButton.gameObject.SetActive(true);
+        tutorialObject.SetActive(false);
+        canvas.GetComponent<Canvas>().sortingOrder = 0;
     }
 
     IEnumerator GameOver()
     {
         gameOverImage.SetActive(true);
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(5.0f);
 
     }
 

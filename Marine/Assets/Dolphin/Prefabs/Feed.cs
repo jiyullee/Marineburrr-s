@@ -11,6 +11,7 @@ public class Feed : MonoBehaviour
     float yPos;
     float rand;
     TutorialManager tutorialManager;
+    Dolphin_EffectManager effectManager;
     bool isCrash;
     bool isDownScore;
     bool isScore;
@@ -20,6 +21,7 @@ public class Feed : MonoBehaviour
         service = GameObject.FindGameObjectWithTag("Service");
         prevPos = transform.position;
         tutorialManager = service.GetComponent<TutorialManager>();
+        effectManager = service.GetComponent<Dolphin_EffectManager>();
     }
     private void Start()
     {
@@ -49,6 +51,7 @@ public class Feed : MonoBehaviour
             isCrash = true;
             isScore = true;
             isDownScore = true;
+            Instantiate(effectManager.GetEat_Effect(), transform.position, Quaternion.identity);
             service.GetComponent<Dolphin_LevelManager>().IncreaseScore(increase);
             Destroy(gameObject);
         }
