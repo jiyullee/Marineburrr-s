@@ -18,6 +18,9 @@ TagManager:
   - Ring
   - CheckScore
   - Ring_Back
+  - PassCheck
+  - Enemy
+  - JoyStick
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2248576604809671622}
   - component: {fileID: 7618278323192605495}
   - component: {fileID: 1181588303053999868}
+  - component: {fileID: 9100801481609436521}
   m_Layer: 0
   m_Name: Clown
   m_TagString: Player
@@ -100,7 +101,6 @@ MonoBehaviour:
   direction: 0
   left: {fileID: 2248576605122303089}
   right: {fileID: 2248576605528512907}
-  speed: 800
 --- !u!50 &7618278323192605495
 Rigidbody2D:
   serializedVersion: 4
@@ -188,6 +188,20 @@ PolygonCollider2D:
       - {x: 0.66999996, y: -0.815}
       - {x: 0.74, y: -0.755}
       - {x: 0.77, y: -0.655}
+--- !u!114 &9100801481609436521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248576604809671621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af5fa2f52320e624892fe4798ce3629b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 7249715943176425013, guid: 920b08fa70df89e4a9d0b1a364be337e, type: 3}
+  moveSpeed: 800
 --- !u!1 &2248576605122303095
 GameObject:
   m_ObjectHideFlags: 0

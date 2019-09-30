@@ -71,8 +71,7 @@ public class MainPlayerMove : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0))
-        {
-            print("Touch");
+        { 
             Ray2D ray = new Ray2D(pos, Vector3.forward);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit.collider.gameObject.tag == "Turtle")

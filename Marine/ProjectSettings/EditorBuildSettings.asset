@@ -14,7 +14,28 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fish.unity
     guid: fe8bf53f42c8fbb44b82b96067292d58
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Dolphin.unity
-    guid: 80abd2c6a45de1749b0ca3efd9009e11
+    guid: c8664dec1d1d8834bbc3ba80f644bf4e
+  - enabled: 1
+    path: Assets/Scenes/Dolphin_LoadingScene 1.unity
+    guid: 727d5d71c0536974b873e0a33007e093
+  - enabled: 1
+    path: Assets/Scenes/Dolphin_LoadingScene 2.unity
+    guid: 958c4699af9704242bc2cb218bbb2b7a
+  - enabled: 1
+    path: Assets/Scenes/Fish_LoadingScene 1.unity
+    guid: dd3238f5c14f3d14f8978922c45d84b3
+  - enabled: 1
+    path: Assets/Scenes/Fish_LoadingScene 2.unity
+    guid: 9b95b0f1b72f2894d909869faaddc3b8
+  - enabled: 1
+    path: Assets/Scenes/Turtle_LoadingScene 1.unity
+    guid: 987fd265e88d9e4428c8b999add202f6
+  - enabled: 1
+    path: Assets/Scenes/Turtle_LoadingScene 2.unity
+    guid: 4404e852a533c2248a0d62c551333b02
   m_configObjects: {}

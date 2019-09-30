@@ -44,7 +44,7 @@ public class ClownfishConversation : MonoBehaviour
         {
 
             mainSaver.GetComponent<Main>().SavePlayerPos(player.transform.position);
-            SceneManager.LoadScene("LoadingScene");
+            SceneManager.LoadScene("Fish_LoadingScene 1");
 
         }
         else if (sceneNum == Conversations.Length - 1)

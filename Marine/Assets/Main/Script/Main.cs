@@ -24,7 +24,6 @@ public class Main : MonoBehaviour
             Destroy(gameObject);
         }
         
-        print(1);
     }
 
     public void levelUp()
