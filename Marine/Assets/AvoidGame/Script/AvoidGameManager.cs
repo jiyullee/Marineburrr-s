@@ -69,6 +69,10 @@ public class AvoidGameManager : MonoBehaviour
                 Main.GetComponent<Main>().level += 1;
             }
             Main.GetComponent<Main>().turtle = true;
+            if (PlayerPrefs.GetInt("TurtleScore") < score)
+            {
+                PlayerPrefs.SetInt("TurtleScore", score);
+            }
             ClearUI.SetActive(true);
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene("Turtle_LoadingScene 2");
@@ -78,6 +82,7 @@ public class AvoidGameManager : MonoBehaviour
             Main.GetComponent<Main>().LoadScene();
             SceneManager.LoadScene("Turtle_LoadingScene 2");
         }
+
         
 
     }
