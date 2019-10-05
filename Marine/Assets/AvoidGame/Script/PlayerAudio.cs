@@ -20,6 +20,7 @@ public class PlayerAudio : MonoBehaviour
             {
                 GetComponent<AudioSource>().clip = pointDown;
                 StartCoroutine(Play());
+                StartCoroutine(TurnRed());
             }
         }
     }
@@ -29,6 +30,21 @@ public class PlayerAudio : MonoBehaviour
         GetComponent<AudioSource>().enabled = false;
         yield return new WaitForSeconds(0.01f);
         GetComponent<AudioSource>().enabled = true;
-
     }
+    IEnumerator TurnRed()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            if (i < 5)
+            {
+                GetComponent<SpriteRenderer>().color -= new Color(0, 0.1f, 0.1f, 0);
+            }
+            else if (i >= 5)
+            {
+                GetComponent<SpriteRenderer>().color += new Color(0, 0.1f, 0.1f, 0);
+            }
+            yield return new WaitForSeconds(0.025f);
+        }
+    }
+
 }

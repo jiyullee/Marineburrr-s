@@ -9,7 +9,7 @@ public class AvoidGameManager : MonoBehaviour
     [SerializeField] int gameTime;
     [SerializeField] int increaseAmount = 5;
     [SerializeField] int decreaseAmount = 10;
-    [SerializeField] GameObject GameOverUI;
+    [SerializeField] GameObject ClearUI;
     [SerializeField] GameObject Main;
     [SerializeField] GameObject middleTutorial;
     // Start is called before the first frame update
@@ -69,18 +69,21 @@ public class AvoidGameManager : MonoBehaviour
                 Main.GetComponent<Main>().level += 1;
             }
             Main.GetComponent<Main>().turtle = true;
-            Main.GetComponent<Main>().LoadScene();
+            ClearUI.SetActive(true);
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("Turtle_LoadingScene 2");
         }
         else if(score < 100)
         {
             Main.GetComponent<Main>().LoadScene();
+            SceneManager.LoadScene("Turtle_LoadingScene 2");
         }
         
 
     }
     IEnumerator StartMiddleTutorial()
     {
-        yield return new WaitForSeconds(74);
+        yield return new WaitForSeconds(71);
         middleTutorial.SetActive(true);
     }
 }

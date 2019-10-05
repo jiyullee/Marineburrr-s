@@ -5,7 +5,7 @@ using UnityEngine;
 public class HazardManager : MonoBehaviour
 {
     [SerializeField] GameObject[] dropObjects;
-    int specialDelay = 76;
+    int specialDelay = 71;
     float delay = 0.4f;
     // Start is called before the first frame update
     void Start()
