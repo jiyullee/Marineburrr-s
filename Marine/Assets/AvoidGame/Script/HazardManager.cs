@@ -5,7 +5,7 @@ using UnityEngine;
 public class HazardManager : MonoBehaviour
 {
     [SerializeField] GameObject[] dropObjects;
-    int specialDelay = 128;
+    int specialDelay = 71;
     float delay = 0.4f;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,7 @@ public class HazardManager : MonoBehaviour
         for(int i = 0; i < dropObjects.Length; i++)
         {
             print(i);
-            dropObjects[i].GetComponent<BoxCollider2D>().isTrigger = false;
+            dropObjects[i].GetComponent<CapsuleCollider2D>().isTrigger = false;
         }
     }
 }

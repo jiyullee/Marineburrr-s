@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5069886185302921499}
   - component: {fileID: -3801021686445984284}
   - component: {fileID: -5599595847338752789}
-  - component: {fileID: 5654787694316628669}
+  - component: {fileID: 727190358602701519}
   m_Layer: 0
   m_Name: Seaweeds
   m_TagString: SeaWeeds
@@ -30,7 +30,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.1696216, y: 0.68550575, z: 54.63046}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2151790670185504636}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96,7 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   service: {fileID: 0}
   canCrash: 1
-  increasePoint: {fileID: 8300000, guid: 546ef55663dedca43a08ee5e5301c8be, type: 3}
 --- !u!50 &-5599595847338752789
 Rigidbody2D:
   serializedVersion: 4
@@ -112,14 +112,14 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.5
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &5654787694316628669
-BoxCollider2D:
+--- !u!70 &727190358602701519
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,16 +131,81 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.5, y: 4.2}
-    newSize: {x: 2.55, y: 1.98}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.09187502, y: 0.06132126}
+  m_Size: {x: 1.5200008, y: 3.4028215}
+  m_Direction: 0
+--- !u!1001 &5083292397135199817
+PrefabInstance:
+  m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 4.2}
-  m_EdgeRadius: 0
+  m_Modification:
+    m_TransformParent: {fileID: 1469841032763504416}
+    m_Modifications:
+    - target: {fileID: 6581951164143828619, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_Name
+      value: Environment Water C Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6529981
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9423846da283db64b8a0f56d519a3583, type: 3}
+--- !u!4 &2151790670185504636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6581951164144148789, guid: 9423846da283db64b8a0f56d519a3583,
+    type: 3}
+  m_PrefabInstance: {fileID: 5083292397135199817}
+  m_PrefabAsset: {fileID: 0}

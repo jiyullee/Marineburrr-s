@@ -15,6 +15,7 @@ public class MainPlayerMove : MonoBehaviour
     [SerializeField] GameObject turtleConversation;
     [SerializeField] GameObject dolphinConversation;
     [SerializeField] GameObject service;
+    [SerializeField] GameObject scoreBoard;
      GameObject mainSaver;
 
 
@@ -91,6 +92,10 @@ public class MainPlayerMove : MonoBehaviour
                 background.SetActive(true);
                 speed = 0;
                dolphinConversation.SetActive(true);
+            }
+            else if(hit.collider.gameObject.tag == "ScoreBoard")
+            {
+                scoreBoard.SetActive(true);
             }
             else if (hit.collider.gameObject.tag == "Map")
             {

@@ -5,18 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class AvoidGameManager : MonoBehaviour
 {
-    public int Score;
+    public int score;
     [SerializeField] int gameTime;
     [SerializeField] int increaseAmount = 5;
     [SerializeField] int decreaseAmount = 10;
-    [SerializeField] GameObject GameOverUI;
+    [SerializeField] GameObject ClearUI;
     [SerializeField] GameObject Main;
+    [SerializeField] GameObject middleTutorial;
     // Start is called before the first frame update
     void Start()
     {
-        Score = 0;
+        score = 0;
         Main = GameObject.FindGameObjectWithTag("Main");
         StartCoroutine(BacktotheMainmenu());
+        StartCoroutine(StartMiddleTutorial());
         //SceneManager.LoadScene("Main");
 
     }
@@ -24,19 +26,19 @@ public class AvoidGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Score < 0)
+        if(score < 0)
         {
-            Score = 0;
+            score = 0;
         }
     }
 
     public void IncreaseScore()
     {
-        Score += increaseAmount;
+        score += increaseAmount;
     }
     public void DecreaseScore()
     {
-        Score -= decreaseAmount;
+        score -= decreaseAmount;
     }
     public void GameOver()
     {
@@ -44,6 +46,10 @@ public class AvoidGameManager : MonoBehaviour
         //{
         //    Main.GetComponent<MainManager>().level += 1;
         //}
+        if(PlayerPrefs.GetInt("TurtleScore") < score)
+        {
+            PlayerPrefs.SetInt("TurtleScore", score);
+        }
         SceneManager.LoadScene("Main");
 
 
@@ -56,20 +62,33 @@ public class AvoidGameManager : MonoBehaviour
     IEnumerator BacktotheMainmenu()
     {
         yield return new WaitForSeconds(gameTime);
-        if(Score >= 100)
+        if(score >= 100)
         {
             if (Main.GetComponent<Main>().level == 2)
             {
                 Main.GetComponent<Main>().level += 1;
             }
             Main.GetComponent<Main>().turtle = true;
-            Main.GetComponent<Main>().LoadScene();
+            if (PlayerPrefs.GetInt("TurtleScore") < score)
+            {
+                PlayerPrefs.SetInt("TurtleScore", score);
+            }
+            ClearUI.SetActive(true);
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene("Turtle_LoadingScene 2");
         }
-        else if(Score < 0)
+        else if(score < 100)
         {
             Main.GetComponent<Main>().LoadScene();
+            SceneManager.LoadScene("Turtle_LoadingScene 2");
         }
+
         
 
+    }
+    IEnumerator StartMiddleTutorial()
+    {
+        yield return new WaitForSeconds(71);
+        middleTutorial.SetActive(true);
     }
 }

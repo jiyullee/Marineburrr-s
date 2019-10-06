@@ -6,19 +6,15 @@ abstract public class DropObject : MonoBehaviour
 {
     public GameObject service;
     int level = 1;
-    [SerializeField] bool canCrash = true;
+    public bool canCrash = true;
     private void Start()
     {
         service = GameObject.FindGameObjectWithTag("Service");
     }
     private void Update()
     {
-        int score = service.GetComponent<AvoidGameManager>().Score;
-        if(score/100 >= level)
-        {
-            level += 1;
-            GetComponent<Rigidbody2D>().gravityScale += 0.5f;
-        }
+        int score = service.GetComponent<AvoidGameManager>().score;
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
