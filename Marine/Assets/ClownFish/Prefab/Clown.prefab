@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7618278323192605495}
   - component: {fileID: 1181588303053999868}
   - component: {fileID: 9100801481609436521}
+  - component: {fileID: 2421326095373960880}
   m_Layer: 0
   m_Name: Clown
   m_TagString: Player
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 385e04cb2b0c804458bcecd4c41ce96f, type: 3}
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -202,6 +203,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7249715943176425013, guid: 920b08fa70df89e4a9d0b1a364be337e, type: 3}
   moveSpeed: 500
+--- !u!95 &2421326095373960880
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248576604809671621}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99a616bc66ea3a04492bb7e28be193bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2248576605122303095
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2248576605122303088
 Transform:
   m_ObjectHideFlags: 0
@@ -318,7 +338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2248576605528512906
 Transform:
   m_ObjectHideFlags: 0

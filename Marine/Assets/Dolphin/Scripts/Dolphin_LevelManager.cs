@@ -17,7 +17,7 @@ public class Dolphin_LevelManager : MonoBehaviour
     public Image SecondTutorialImage;
     TutorialManager tutorialManager;
     SoundManager soundManager;
-   
+    List<GameObject> rings = new List<GameObject>();
     void Awake()
     {
         tutorialManager = GetComponent<TutorialManager>();
@@ -36,41 +36,40 @@ public class Dolphin_LevelManager : MonoBehaviour
             {
                 int randYpos = Random.Range(0, 2);
                 if(randYpos == 0)
-                     Instantiate(ringPrefab, new Vector3(xPos, yPos[0], 0), Quaternion.identity);
+                    rings.Add(Instantiate(ringPrefab, new Vector3(xPos, yPos[0], 0), Quaternion.identity));
                 else
-                    Instantiate(ringPrefab, new Vector3(xPos, yPos[1], 0), Quaternion.identity);
+                    rings.Add(Instantiate(ringPrefab, new Vector3(xPos, yPos[1], 0), Quaternion.identity));
+                xPos -= 600;
                 if (tutorialManager.getIsChange())
-                {                   
-                    xPos -= 1200;
+                {
+                    break;
                 }
-                else
-                {                   
-                    xPos -= 600;
-                }
+               
             }
             yield return new WaitForSeconds(ringDelay);
         }
     }
-    private void Update()
+    public int GetScore()
     {
-        if (score <= 0)
-            score = 0;
-       
-          ///  if(main.level == 1)
-         //       main.levelUp();
-          //  main.LoadScene();
-        
-          
+        return score;
+    }
+    public void DestroyRings()
+    {
+        for (int i = 0; i < rings.Count; i++)
+            Destroy(rings[i]);
+    }
+    private void Update()
+    {        
         textScore.text = score.ToString();
     }
     public void DecreaseScore(int n)
     {
         score -= n;
-        soundManager.TurnOnMinusSound();
+        if (score <= 0)
+            score = 0;
     }
     public void IncreaseScore(int n)
     {
-        score += n;
-        soundManager.TurnOnPlusSound();
+        score += n;        
     }
 }

@@ -14,8 +14,10 @@ public class Dolphin_PassCheck : MonoBehaviour
     GameObject service;
     TutorialManager tutorialManager;
     GameObject player;
+    AudioSource audioSource;
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");              
         service = GameObject.FindGameObjectWithTag("Service");
         tutorialManager = service.GetComponent<TutorialManager>();
@@ -41,6 +43,7 @@ public class Dolphin_PassCheck : MonoBehaviour
                 if (isPass && !isScored && !ring.getIsDownScore())
                 {
                     dolphin_LevelManager.IncreaseScore(increase);
+                    audioSource.Play();
                     isScored = true;
                 }
 

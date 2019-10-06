@@ -16,8 +16,10 @@ public class TutorialManager : MonoBehaviour
     public GameObject gameAudioObject;
     AudioSource audioSource;
     bool loadTutorial = true;
+    Dolphin_LevelManager dolphin_LevelManager;
     void Start()
     {
+        dolphin_LevelManager = GetComponent<Dolphin_LevelManager>();
         audioSource = gameAudioObject.GetComponent<AudioSource>();
         soundManager = GetComponentInChildren<SoundManager>();
         foodManager = GetComponent<FoodManager>();
@@ -30,13 +32,15 @@ public class TutorialManager : MonoBehaviour
         while (true)
         {
             time += Time.deltaTime;
-            // 110 141
-            if (time >= 110.0f && loadTutorial)
+            // 64 98
+            if (time >= 64.0f && loadTutorial)
             {
-                isChange = true;                
+                isChange = true;
+                dolphin_LevelManager.DestroyRings();
+                soundManager.TurnOnClickSound();
                 StartCoroutine(LoadTutorial());
             }
-            else if (time >= 141.0f)
+            else if (time >= 98.0f)
             {
                 main.dolphin = true;
                 if (main.level == 1)
@@ -56,11 +60,7 @@ public class TutorialManager : MonoBehaviour
     {
         tutorialObject.SetActive(true);
         Time.timeScale = 0;
-        audioSource.Pause();
-        for (int i = 0; i < foodManager.feedList.Count; i++)
-        {
-            Destroy(foodManager.feedList[i]);
-        }     
+        audioSource.Pause();           
         loadTutorial = false;
         yield return null;
     }
@@ -89,6 +89,10 @@ public class TutorialManager : MonoBehaviour
     }
     IEnumerator GameOver()
     {
+        if (PlayerPrefs.GetInt("DolphinScore") < dolphin_LevelManager.GetScore())
+        {
+            PlayerPrefs.SetInt("DolphinScore", dolphin_LevelManager.GetScore());
+        }
         gameOverImage.SetActive(true);
         yield return new WaitForSeconds(5.0f);
    

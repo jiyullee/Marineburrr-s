@@ -11,8 +11,16 @@ public class Dolphin_CheckScore : MonoBehaviour
     GameObject service;
     bool isCrash;
     Dolphin_EffectManager effectManager;
+    public AudioClip increaseAudio;
+    public AudioClip decreaseAudio;
+    AudioSource audioSource;
+    SpriteRenderer spriteRenderer;
+    Dolphin dolphin;
     private void Start()
     {
+        dolphin = GetComponentInParent<Dolphin>();
+        spriteRenderer = dolphin.GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         service = GameObject.FindGameObjectWithTag("Service");
         dolphin_LevelManager = service.GetComponent<Dolphin_LevelManager>();
         tutorialManager = service.GetComponent<TutorialManager>();
@@ -31,6 +39,9 @@ public class Dolphin_CheckScore : MonoBehaviour
                         collider.gameObject.GetComponent<Ring>().setIsScore(true);
                         collider.gameObject.GetComponent<Ring>().setIsDownScore(true);
                         Instantiate(effectManager.GetRingPass_Effect(), transform.position - new Vector3(50,0,0), Quaternion.identity);
+                        audioSource.clip = increaseAudio;
+                        audioSource.Play();
+                        
                         dolphin_LevelManager.IncreaseScore(increase);
                     }
                 }
@@ -43,7 +54,11 @@ public class Dolphin_CheckScore : MonoBehaviour
                 {
                     collider.gameObject.GetComponent<Ring>().setIsScore(true);
                     collider.gameObject.GetComponent<Ring>().setIsDownScore(true);
+                    audioSource.clip = decreaseAudio;
+                    audioSource.Play();
+        
                     dolphin_LevelManager.DecreaseScore(decrease);
+                    StartCoroutine(ChangeColor());
                 }
 
             }
@@ -56,6 +71,9 @@ public class Dolphin_CheckScore : MonoBehaviour
                 collider.gameObject.GetComponent<Ring>().setIsScore(true);
                 collider.gameObject.GetComponent<Ring>().setIsDownScore(true);
                 dolphin_LevelManager.DecreaseScore(decrease);
+                audioSource.clip = decreaseAudio;
+                audioSource.Play();
+                StartCoroutine(ChangeColor());
             }
             isCrash = true;
         }
@@ -63,5 +81,12 @@ public class Dolphin_CheckScore : MonoBehaviour
     public bool getIsCrash()
     {
         return isCrash;
+    }
+
+    IEnumerator ChangeColor()
+    {
+        spriteRenderer.color = new Color(190,0,0,255);
+        yield return new WaitForSeconds(0.5f);
+        spriteRenderer.color = new Color(255, 255, 255, 255);
     }
 }

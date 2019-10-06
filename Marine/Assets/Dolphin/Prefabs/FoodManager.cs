@@ -9,7 +9,6 @@ public class FoodManager : MonoBehaviour
     GameObject player;
     int feedProperty = 70;
     TutorialManager tutorialManager;
-    public List<GameObject> feedList = new List<GameObject>();
     void Start()
     {
         tutorialManager = GetComponent<TutorialManager>();
@@ -31,16 +30,20 @@ public class FoodManager : MonoBehaviour
             if(rand <= feedProperty)
             {
                 GameObject temp = Instantiate(feed[Random.Range(0, 2)], new Vector3(xPos, yPos, 0), Quaternion.identity);
-                feedList.Add(temp);
-            }
-                
-            yield return new WaitForSeconds(feedDelay);
+                if (tutorialManager.getIsChange())
+                {
+                    temp.transform.localScale = new Vector3(120, 120, 0);
+                }
+            }         
             if (tutorialManager.getIsChange())
             {
-                xPos -= 800.0f;               
-            }
-            else
                 xPos -= 600.0f;
+            }              
+            else
+                xPos -= 650.0f;
+            yield return new WaitForSeconds(feedDelay);
+           
+           
 
 
         }

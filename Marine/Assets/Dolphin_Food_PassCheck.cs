@@ -11,10 +11,12 @@ public class Dolphin_Food_PassCheck : MonoBehaviour
     TutorialManager tutorialManager;
     public int increase;
     bool isScored;
-   
+    AudioSource audioSource;
     GameObject player;
+    public AudioClip increaseAudio;
     void Start()
     {
+        audioSource = GetComponentInParent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         service = GameObject.FindGameObjectWithTag("Service");
         tutorialManager = service.GetComponent<TutorialManager>();
@@ -34,6 +36,8 @@ public class Dolphin_Food_PassCheck : MonoBehaviour
             {
                 if (isPass && !isScored && !food.getIsDownScore())
                 {
+                    audioSource.clip = increaseAudio;
+                    audioSource.Play();
                     dolphin_LevelManager.IncreaseScore(increase);
                     isScored = true;
                 }

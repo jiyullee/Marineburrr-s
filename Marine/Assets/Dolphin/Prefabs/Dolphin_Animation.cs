@@ -7,8 +7,10 @@ public class Dolphin_Animation : MonoBehaviour
     public Animator anim;
     bool isSlide;
     Ground ground;
+    Dolphin dolphin;
     void Start()
     {
+        dolphin = GetComponent<Dolphin>();
         ground = GameObject.FindGameObjectWithTag("Ground").GetComponent<Ground>();
         anim = GetComponent<Animator>();
       
