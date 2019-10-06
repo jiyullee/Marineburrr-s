@@ -1963,7 +1963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  gameTime: 120
+  gameTime: 96
   increaseAmount: 5
   decreaseAmount: 10
   ClearUI: {fileID: 102247106}
