@@ -86,7 +86,7 @@ public class Dolphin_CheckScore : MonoBehaviour
     IEnumerator ChangeColor()
     {
         spriteRenderer.color = new Color(190,0,0,255);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = new Color(255, 255, 255, 255);
     }
 }

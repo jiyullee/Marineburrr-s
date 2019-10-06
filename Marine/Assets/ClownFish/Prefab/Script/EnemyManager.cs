@@ -7,8 +7,10 @@ public class EnemyManager : MonoBehaviour
     public GameObject[] enemy;
     public float enemyDelay;
     public int[] weight;
+    Fish_TutorialManager fish_TutorialManager;
     void Start()
     {
+        fish_TutorialManager = GetComponent<Fish_TutorialManager>();
         StartCoroutine(SpawnEnemy());
     }
 
@@ -16,6 +18,8 @@ public class EnemyManager : MonoBehaviour
     {
         while (true)
         {
+            if (fish_TutorialManager.isGameOver)
+                break;
             int leftOrRight = Random.Range(0, 2);
             float xPos;
             float yPos;

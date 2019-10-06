@@ -17,12 +17,13 @@ public class Fish_TutorialManager : MonoBehaviour
     bool loadTutorial = true;
     public Canvas canvas;
     LevelManager levelManager;
+    public bool isGameOver;
     void Start()
     {
         levelManager = GetComponent<LevelManager>();
         audioSource = gameAudioObject.GetComponent<AudioSource>();
         soundManager = GetComponent<SoundManager>();       
-      //  main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
+        main = GameObject.FindGameObjectWithTag("Main").GetComponent<Main>();
         StartCoroutine(TimeCheck());
     }
 
@@ -41,7 +42,7 @@ public class Fish_TutorialManager : MonoBehaviour
             {
                 StartCoroutine(GameOver());
                 main.crownFish = true;
-                SceneManager.LoadScene(nextSceneName);
+               
             }
            
             yield return null;
@@ -81,6 +82,7 @@ public class Fish_TutorialManager : MonoBehaviour
     public void PlayButton()
     {
         soundManager.TurnOnClickSound();
+        audioSource.Play();
         Time.timeScale = 1;
         shootButton.gameObject.SetActive(true);
         tutorialObject.SetActive(false);
@@ -89,13 +91,16 @@ public class Fish_TutorialManager : MonoBehaviour
 
     IEnumerator GameOver()
     {
+        isGameOver = true;
         if (PlayerPrefs.GetInt("FishScore") < levelManager.GetScore())
         {
             PlayerPrefs.SetInt("FishScore", levelManager.GetScore());
         }
         gameOverImage.SetActive(true);
+        levelManager.player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 0);
+        levelManager.player.transform.position = Vector3.zero;
         yield return new WaitForSeconds(5.0f);
-
+        SceneManager.LoadScene(nextSceneName);
     }
 
     public bool GetBulletOn()
