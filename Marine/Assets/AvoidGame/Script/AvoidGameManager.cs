@@ -62,8 +62,7 @@ public class AvoidGameManager : MonoBehaviour
     IEnumerator BacktotheMainmenu()
     {
         yield return new WaitForSeconds(gameTime);
-        if(score >= 100)
-        {
+     
             if (Main.GetComponent<Main>().level == 2)
             {
                 Main.GetComponent<Main>().level += 1;
@@ -76,12 +75,7 @@ public class AvoidGameManager : MonoBehaviour
             ClearUI.SetActive(true);
             yield return new WaitForSeconds(3);
             SceneManager.LoadScene("Turtle_LoadingScene 2");
-        }
-        else if(score < 100)
-        {
-            Main.GetComponent<Main>().LoadScene();
-            SceneManager.LoadScene("Turtle_LoadingScene 2");
-        }
+
 
         
 
