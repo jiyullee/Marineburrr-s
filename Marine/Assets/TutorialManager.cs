@@ -35,9 +35,7 @@ public class TutorialManager : MonoBehaviour
             // 64 98
             if (time >= 64.0f && loadTutorial)
             {
-                isChange = true;
-                dolphin_LevelManager.DestroyRings();
-                soundManager.TurnOnClickSound();
+                isChange = true;                               
                 StartCoroutine(LoadTutorial());
             }
             else if (time >= 98.0f)
@@ -45,8 +43,9 @@ public class TutorialManager : MonoBehaviour
                 main.dolphin = true;
                 if (main.level == 1)
                     main.levelUp();
+               
                 StartCoroutine(GameOver());
-                SceneManager.LoadScene(nextSceneName);
+                
             }
            
             yield return null;
@@ -58,6 +57,7 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator LoadTutorial()
     {
+        dolphin_LevelManager.DestroyRings();
         tutorialObject.SetActive(true);
         Time.timeScale = 0;
         audioSource.Pause();           
@@ -83,6 +83,7 @@ public class TutorialManager : MonoBehaviour
     */
     public void PlayButton()
     {
+        soundManager.TurnOnClickSound();
         audioSource.Play();
         Time.timeScale = 1;
         tutorialObject.SetActive(false);
@@ -94,8 +95,10 @@ public class TutorialManager : MonoBehaviour
             PlayerPrefs.SetInt("DolphinScore", dolphin_LevelManager.GetScore());
         }
         gameOverImage.SetActive(true);
+        dolphin_LevelManager.player.GetComponent<Dolphin>().speed = 0;
         yield return new WaitForSeconds(5.0f);
-   
+        SceneManager.LoadScene(nextSceneName);
+
     }
     public bool getIsChange()
     {

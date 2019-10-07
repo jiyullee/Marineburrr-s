@@ -13,8 +13,10 @@ public class LevelManager : MonoBehaviour
     public Text scoreText;
     float time = 0;
     SoundManager soundManager;
+    Fish_TutorialManager fish_TutorialManager;
     void Start()
     {
+        fish_TutorialManager = GetComponent<Fish_TutorialManager>();
         soundManager = GetComponentInChildren<SoundManager>();
         StartCoroutine(SpawnFood());
     }
@@ -40,7 +42,8 @@ public class LevelManager : MonoBehaviour
                 float yPos = Random.Range(0.0f, 720.0f);
                 Instantiate(food, new Vector3(xPos, yPos, 0), Quaternion.identity);
             }
-          
+            if (fish_TutorialManager.isGameOver)
+                break;
             yield return new WaitForSeconds(foodDelay);
         }
     }

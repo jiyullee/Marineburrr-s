@@ -859,7 +859,6 @@ MonoBehaviour:
   - {fileID: 5310676049817540367, guid: 22c9f2996ee94a9499f7e16a4447ed74, type: 3}
   - {fileID: 1028510942544098385, guid: b4289afe68993c54591364aa3ebb3c22, type: 3}
   feedDelay: 1.2
-  feedList: []
 --- !u!114 &707294025
 MonoBehaviour:
   m_ObjectHideFlags: 0

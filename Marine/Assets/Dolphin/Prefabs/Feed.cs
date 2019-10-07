@@ -12,6 +12,7 @@ public class Feed : MonoBehaviour
     float rand;
     TutorialManager tutorialManager;
     Dolphin_EffectManager effectManager;
+    SoundManager soundManager;
     bool isCrash;
     bool isDownScore;
     bool isScore;
@@ -20,12 +21,16 @@ public class Feed : MonoBehaviour
     AudioSource audioSource;
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        rand = Random.Range(80, 700);
+        audioSource = GetComponent<AudioSource>();       
         service = GameObject.FindGameObjectWithTag("Service");
         prevPos = transform.position;
         tutorialManager = service.GetComponent<TutorialManager>();
         effectManager = service.GetComponent<Dolphin_EffectManager>();
+        soundManager = service.GetComponent<SoundManager>();
+        if (tutorialManager.getIsChange())
+            rand = Random.Range(80, 400);
+        else
+            rand = Random.Range(80, 700);
     }
     private void Start()
     {
@@ -33,7 +38,6 @@ public class Feed : MonoBehaviour
     }
     private void Update()
     {
-       
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, rand, 1000),0);
     }
     IEnumerator Slerp()
@@ -58,9 +62,9 @@ public class Feed : MonoBehaviour
             isDownScore = true;
             Instantiate(effectManager.GetEat_Effect(), transform.position, Quaternion.identity);
             service.GetComponent<Dolphin_LevelManager>().IncreaseScore(increase);
-            audioSource.clip = increaseAudio;
-            audioSource.Play();
-           
+            soundManager.TurnOnPlusSound();
+
+
             Destroy(gameObject);
         }
         else if (collider.gameObject.tag == "Player" && tutorialManager.getIsChange() && !isDownScore)
@@ -70,6 +74,7 @@ public class Feed : MonoBehaviour
             isDownScore = true;
             audioSource.clip = decreaseAudio;
             audioSource.Play();
+
             StartCoroutine(ChangeColor(collider.gameObject));
             service.GetComponent<Dolphin_LevelManager>().DecreaseScore(decrease);
         }       
@@ -90,7 +95,7 @@ public class Feed : MonoBehaviour
     {
         SpriteRenderer spriteRenderer = player.GetComponent<SpriteRenderer>();
         spriteRenderer.color = new Color(190, 0, 0, 255);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = new Color(255, 255, 255, 255);
     }
 }

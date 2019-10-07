@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Loading : MonoBehaviour
 {
     public string nextSceneName;
-    public int p;
     bool isDone;
     float time = 0.0f;
     AsyncOperation async_operation;
@@ -34,7 +33,7 @@ public class Loading : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        if (time >= 3.0f)
+        if (time >= 4.0f)
             SceneManager.LoadScene(nextSceneName);
     }
 }
