@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Dolphin_CheckScore : MonoBehaviour
 {
     public int increase;
@@ -16,6 +16,7 @@ public class Dolphin_CheckScore : MonoBehaviour
     AudioSource audioSource;
     SpriteRenderer spriteRenderer;
     Dolphin dolphin;
+    public Text scoreVariation;
     private void Start()
     {
         dolphin = GetComponentInParent<Dolphin>();
@@ -41,7 +42,7 @@ public class Dolphin_CheckScore : MonoBehaviour
                         Instantiate(effectManager.GetRingPass_Effect(), transform.position - new Vector3(50,0,0), Quaternion.identity);
                         audioSource.clip = increaseAudio;
                         audioSource.Play();
-                        
+                        StartCoroutine(ShowIncreaseScore());
                         dolphin_LevelManager.IncreaseScore(increase);
                     }
                 }
@@ -55,9 +56,9 @@ public class Dolphin_CheckScore : MonoBehaviour
                     collider.gameObject.GetComponent<Ring>().setIsScore(true);
                     collider.gameObject.GetComponent<Ring>().setIsDownScore(true);
                     audioSource.clip = decreaseAudio;
-                    audioSource.Play();
-        
+                    audioSource.Play();       
                     dolphin_LevelManager.DecreaseScore(decrease);
+                    StartCoroutine(ShowDecreaseScore());
                     StartCoroutine(ChangeColor());
                 }
 
@@ -71,6 +72,7 @@ public class Dolphin_CheckScore : MonoBehaviour
                 collider.gameObject.GetComponent<Ring>().setIsScore(true);
                 collider.gameObject.GetComponent<Ring>().setIsDownScore(true);
                 dolphin_LevelManager.DecreaseScore(decrease);
+                StartCoroutine(ShowDecreaseScore());
                 audioSource.clip = decreaseAudio;
                 audioSource.Play();
                 StartCoroutine(ChangeColor());
@@ -88,5 +90,22 @@ public class Dolphin_CheckScore : MonoBehaviour
         spriteRenderer.color = new Color(190,0,0,255);
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = new Color(255, 255, 255, 255);
+    }
+
+    IEnumerator ShowDecreaseScore()
+    {
+        scoreVariation.text = "-" + decrease.ToString();
+        scoreVariation.GetComponent<Text>().color = new Color(255, 0, 0, 255);
+        scoreVariation.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        scoreVariation.GetComponent<Text>().text = "";
+    }
+    IEnumerator ShowIncreaseScore()
+    {
+        scoreVariation.text = "+" + increase.ToString();
+        scoreVariation.GetComponent<Text>().color = new Color(0, 0, 255, 255);
+        scoreVariation.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        scoreVariation.GetComponent<Text>().text = "";
     }
 }

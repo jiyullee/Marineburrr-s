@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Food : MonoBehaviour
 {
     public int increase;
     public float lifeTime;
     AudioSource audioSource;
+
     private void Start()
     {
+        
         audioSource = GetComponent<AudioSource>();
     }
     private void OnEnable()
@@ -26,4 +28,5 @@ public class Food : MonoBehaviour
     {
         audioSource.Play();
     }
+   
 }

@@ -15,10 +15,6 @@ public class FoodManager : MonoBehaviour
         StartCoroutine(SpawnFeed());
     }
 
-    private void Awake()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
     IEnumerator SpawnFeed()
     {
         float xPos = 300.0f;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Bullet : MonoBehaviour
 {
     public float lifeTime;
@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     SoundManager soundManager;
     AudioSource audioSource;
     Fish_EffectManager effectManager;
+    GameObject scoreVariation;
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -21,6 +22,7 @@ public class Bullet : MonoBehaviour
         soundManager = service.GetComponent<SoundManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         effectManager = service.GetComponent<Fish_EffectManager>();
+        scoreVariation = player.GetComponentInChildren<ScoreVariationText>().gameObject;
     }
     private void OnEnable()
     {
@@ -52,9 +54,20 @@ public class Bullet : MonoBehaviour
             if(collider.GetComponent<Enemy>().HP == 0)
             {
                 Instantiate(effectManager.GetDead_Effect(), transform.position, Quaternion.identity);
-                levelManager.IncreaseScore(collider.GetComponent<Enemy>().increase);
+                int increase = collider.GetComponent<Enemy>().increase;
+                levelManager.IncreaseScore(increase);
+                StartCoroutine(ShowIncreaseScore(increase));
                 Destroy(collider.gameObject);
             }
         }
+    }
+   
+    IEnumerator ShowIncreaseScore(int increase)
+    {
+        scoreVariation.GetComponent<Text>().text = "+" + increase.ToString();
+        scoreVariation.GetComponent<Text>().color = new Color(0, 0, 255, 255);
+        scoreVariation.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        scoreVariation.GetComponent<Text>().text = "";
     }
 }

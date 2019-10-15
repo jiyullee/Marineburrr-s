@@ -13,8 +13,10 @@ public class ClownFish : MonoBehaviour
     bool canFire = true;
     SpriteRenderer spriteRenderer;
     Animator anim;
+    GameObject scoreVariation;
     private void Awake()
     {
+        scoreVariation = GetComponentInChildren<ScoreVariationText>().gameObject;
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         service = GameObject.FindGameObjectWithTag("Service");
@@ -43,15 +45,19 @@ public class ClownFish : MonoBehaviour
     {
         if(collider.gameObject.tag == "Food")
         {
-            service.GetComponent<LevelManager>().IncreaseScore(collider.GetComponent<Food>().increase);
+            int increase = collider.GetComponent<Food>().increase;
+            service.GetComponent<LevelManager>().IncreaseScore(increase);
             collider.gameObject.GetComponent<Food>().TurnOnPlusSound();
+            StartCoroutine(ShowIncreaseScore(increase));
             Destroy(collider.gameObject);
         }   
         if(collider.gameObject.tag == "Enemy")
         {
             StartCoroutine(ChangeColor());
             collider.gameObject.GetComponent<Enemy>().TurnOnMinusSound();
-            service.GetComponent<LevelManager>().DecreaseScore(collider.GetComponent<Enemy>().decrease);
+            int decrease = collider.GetComponent<Enemy>().decrease;
+            service.GetComponent<LevelManager>().DecreaseScore(decrease);
+            StartCoroutine(ShowDecreaseScore(decrease));
             Destroy(collider.gameObject);
         }
     }
@@ -68,5 +74,21 @@ public class ClownFish : MonoBehaviour
         spriteRenderer.color = new Color(190, 0, 0, 255);
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = new Color(255, 255, 255, 255);
+    }
+    IEnumerator ShowIncreaseScore(int increase)
+    {
+        scoreVariation.GetComponent<Text>().text = "+" + increase.ToString();
+        scoreVariation.GetComponent<Text>().color = new Color(0, 0, 255, 255);
+        scoreVariation.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        scoreVariation.GetComponent<Text>().text = "";
+    }
+    IEnumerator ShowDecreaseScore(int decrease)
+    {
+        scoreVariation.GetComponent<Text>().text = "-" + decrease.ToString();
+        scoreVariation.GetComponent<Text>().color = new Color(255, 0, 0, 255);
+        scoreVariation.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        scoreVariation.GetComponent<Text>().text = "";
     }
 }

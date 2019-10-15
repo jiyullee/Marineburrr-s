@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Feed : MonoBehaviour
 {
     public int increase;
@@ -19,6 +19,8 @@ public class Feed : MonoBehaviour
     public AudioClip increaseAudio;
     public AudioClip decreaseAudio;
     AudioSource audioSource;
+    GameObject scoreVariation;
+    GameObject player;
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();       
@@ -27,13 +29,16 @@ public class Feed : MonoBehaviour
         tutorialManager = service.GetComponent<TutorialManager>();
         effectManager = service.GetComponent<Dolphin_EffectManager>();
         soundManager = service.GetComponent<SoundManager>();
+        player = service.GetComponent<Dolphin_LevelManager>().player;
+        scoreVariation = player.GetComponentInChildren<ScoreVariationText>().gameObject;
+       
+    }
+    private void Start()
+    {
         if (tutorialManager.getIsChange())
             rand = Random.Range(80, 400);
         else
             rand = Random.Range(80, 700);
-    }
-    private void Start()
-    {
         StartCoroutine(Slerp());
     }
     private void Update()
@@ -61,6 +66,7 @@ public class Feed : MonoBehaviour
             isScore = true;
             isDownScore = true;
             Instantiate(effectManager.GetEat_Effect(), transform.position, Quaternion.identity);
+            StartCoroutine(ShowIncreaseScore());
             service.GetComponent<Dolphin_LevelManager>().IncreaseScore(increase);
             soundManager.TurnOnPlusSound();
 
@@ -74,7 +80,7 @@ public class Feed : MonoBehaviour
             isDownScore = true;
             audioSource.clip = decreaseAudio;
             audioSource.Play();
-
+            StartCoroutine(ShowDecreaseScore());
             StartCoroutine(ChangeColor(collider.gameObject));
             service.GetComponent<Dolphin_LevelManager>().DecreaseScore(decrease);
         }       
@@ -97,5 +103,21 @@ public class Feed : MonoBehaviour
         spriteRenderer.color = new Color(190, 0, 0, 255);
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.color = new Color(255, 255, 255, 255);
+    }
+    IEnumerator ShowDecreaseScore()
+    {
+        scoreVariation.GetComponent<Text>().text = "-"+ decrease.ToString();
+        scoreVariation.GetComponent<Text>().color = new Color(255, 0, 0, 255);
+        scoreVariation.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        scoreVariation.GetComponent<Text>().text = "";
+    }
+    IEnumerator ShowIncreaseScore()
+    {
+        scoreVariation.GetComponent<Text>().text = "+" + increase.ToString();
+        scoreVariation.GetComponent<Text>().color = new Color(0, 0, 255, 255);
+        scoreVariation.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        scoreVariation.GetComponent<Text>().text = "";
     }
 }
