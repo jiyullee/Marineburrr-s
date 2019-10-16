@@ -5,9 +5,10 @@ using UnityEngine;
 public class Trash : DropObject
 {
     public bool crush;
-    public override void Function()
+    public override GameObject Function(GameObject player)
     {
-
+        player.GetComponent<TextControll>().SpawnMinus();
         service.GetComponent<AvoidGameManager>().DecreaseScore();
+        return player;
     }
 }

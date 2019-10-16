@@ -5,9 +5,11 @@ using UnityEngine;
 public class SeaWeeds : DropObject
 {
  
-   public override void Function()
+   public override GameObject Function(GameObject player)
     {
+        player.GetComponent<TextControll>().SpawnPlus();
         service.GetComponent<AvoidGameManager>().IncreaseScore();
+        return player;
     }
 
     

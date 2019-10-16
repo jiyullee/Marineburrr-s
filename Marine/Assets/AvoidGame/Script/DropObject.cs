@@ -5,11 +5,13 @@ using UnityEngine;
 abstract public class DropObject : MonoBehaviour
 {
     public GameObject service;
+    GameObject player;
     int level = 1;
     public bool canCrash = true;
     private void Start()
     {
         service = GameObject.FindGameObjectWithTag("Service");
+        player = service.GetComponent<InputManager>().player;
     }
     private void Update()
     {
@@ -33,10 +35,10 @@ abstract public class DropObject : MonoBehaviour
         }
         else if (collider.tag == "Player" && canCrash == true)
         {
-            Function();
+            Function(player);
             Destroy(gameObject);
         }
     }
    
-    abstract public void Function();
+    abstract public GameObject Function(GameObject player);
 }

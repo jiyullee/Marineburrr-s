@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    public GameObject player;
     Vector3 startPos = Vector3.zero;
     Vector3 endPos = Vector3.zero;
      bool right = false;
